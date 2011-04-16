@@ -20,13 +20,13 @@ class View extends \Fuel\Core\View {
 
 	public static function _init()
 	{
-		\Config::load('view', true);
+		\Config::load('parser', true);
 	}
 
 	public static function factory($file = null, array $data = null, $auto_encode = null)
 	{
 		$extension = pathinfo($file, PATHINFO_EXTENSION);
-		$class     = \Config::get('view.extensions.'.$extension, get_called_class());
+		$class     = \Config::get('parser.extensions.'.$extension, get_called_class());
 		$file      = pathinfo($file, PATHINFO_DIRNAME).DS.pathinfo($file, PATHINFO_FILENAME);
 
 		if (is_array($class))
@@ -38,6 +38,8 @@ class View extends \Fuel\Core\View {
 		$view = new $class($file, $data, $auto_encode);
 		$extension and $view->extension = $extension;
 		method_exists($view, 'init') and $view->init();
+
+		return $view;
 	}
 
 	public $extension = 'php';
