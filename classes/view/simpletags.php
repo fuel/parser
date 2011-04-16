@@ -32,7 +32,7 @@ class View_SimpleTags extends View {
 				\Config::get('parser.simpletags.delimiters.1', '}')
 			);
 			$simpletags->set_trigger(\Config::get('parser.simpletags.trigger', 'tag:'));
-			$output = $simpletags->parse($view_filename, $data);
+			$output = $simpletags->parse(file_get_contents($view_filename), $data);
 
 			return $output['content'];
 		}

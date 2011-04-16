@@ -1,7 +1,6 @@
 <?php
 
 return array(
-
 	'extensions' => array(
 		'php'     => 'View',
 		'dwoo'    => array('class' => 'View_Dwoo', 'extension' => '.tpl'),

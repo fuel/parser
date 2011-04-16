@@ -12,7 +12,6 @@
  * @link       http://fuelphp.com
  */
 
-
 Autoloader::add_core_namespace('Parser');
 
 Autoloader::add_classes(array(
