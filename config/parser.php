@@ -16,4 +16,14 @@ return array(
 		'delimiters'  => array('{', '}'),
 		'trigger'     => 'tag:',
 	),
+
+	'View_Twig' => array(
+		'include'     => APPPATH.'twig'.DS.'Autoloader.php',
+	),
+
+	'View_Dwoo' => array(
+		'include'     => APPPATH.'twig'.DS.'dwooAutoload.php',
+	),
 );
+
+// end of file parser.php
