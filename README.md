@@ -13,3 +13,9 @@
 
     // load a SimpleTags template, ATTENTION: this one expects app/views/example.tpl
     View::factory('example.dwoo');
+
+## Installing parsers
+
+Only SimpleTags is included. While many other drivers are included, their libraries are not and are by default expected in vendor/app/lib_name (lowercase lib_name), you'll have to download them yourself.
+
+You can configure them to be loaded from other locations by copying the parser.php config file to your app and editing it.
