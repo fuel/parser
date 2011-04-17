@@ -6,7 +6,8 @@ return array(
 	'extensions' => array(
 		'php'     => 'View',
 		'stags'   => 'View_SimpleTags',
-		'dwoo'    => array('class' => 'View_Dwoo', 'extension' => '.tpl'),  // example, not yet implemented
+		'twig'    => 'View_Twig',
+		'dwoo'    => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
 	),
 
 	// Individual class config by classname
