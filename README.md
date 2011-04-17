@@ -19,3 +19,10 @@
 Only SimpleTags is included. While many other drivers are included, their libraries are not and are by default expected in app/vendor/lib_name (lowercase lib_name), you'll have to download them yourself.
 
 You can configure them to be loaded from other locations by copying the parser.php config file to your app and editing it.
+
+## Config and runtime config
+
+Currently the drivers still lack a lot of config options they should probably accept. They are currently all configured to work with one instance of their parser library, which is available to config:
+
+    $view = View::factory('example.stags');
+    $view->parser()->set_delimiters('{', '}');
