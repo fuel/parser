@@ -1,15 +1,17 @@
 <?php
 
 return array(
+
+	// Register extensions to their parsers, either classname or array config
 	'extensions' => array(
 		'php'     => 'View',
-		'dwoo'    => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
 		'stags'   => 'View_SimpleTags',
-		'twig'    => 'View_Twig',
-		'smarty'  => array('class' => 'View_Smarty', 'extension' => '.tpl'),
+		'dwoo'    => array('class' => 'View_Dwoo', 'extension' => '.tpl'),  // example, not yet implemented
 	),
 
-	'simpletags' => array(
+	// Individual class config by classname
+
+	'View_SimpleTags' => array(
 		'include'     => PKGPATH.'parser'.DS.'vendor'.DS.'simpletags.php',
 		'delimiters'  => array('{', '}'),
 		'trigger'     => 'tag:',

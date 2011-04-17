@@ -16,8 +16,6 @@ namespace Parser;
 
 class View extends \Fuel\Core\View {
 
-	protected static $loaded_files = array();
-
 	public static function _init()
 	{
 		\Config::load('parser', true);
@@ -29,6 +27,7 @@ class View extends \Fuel\Core\View {
 		$class     = \Config::get('parser.extensions.'.$extension, get_called_class());
 		$file      = pathinfo($file, PATHINFO_DIRNAME).DS.pathinfo($file, PATHINFO_FILENAME);
 
+		// Class can be an array config
 		if (is_array($class))
 		{
 			$class['extension'] and $extension = $class['extension'];
@@ -36,25 +35,17 @@ class View extends \Fuel\Core\View {
 		}
 
 		$view = new $class($file, $data, $auto_encode);
+
+		// Set extension when given
 		$extension and $view->extension = $extension;
-		method_exists($view, 'init') and $view->init();
 
-		return $view;
-	}
-
-	public $extension = 'php';
-
-	public function set_filename($file)
-	{
-		if (($path = \Fuel::find_file('views', $file, '.'.$this->extension, false, false)) === false)
+		// Include necessary files
+		foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
 		{
-			throw new \View_Exception('The requested view could not be found: '.\Fuel::clean_path($file));
+			include_once $include;
 		}
 
-		// Store the file path locally
-		$this->_file = $path;
-
-		return $this;
+		return $view;
 	}
 }
 

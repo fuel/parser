@@ -28,10 +28,10 @@ class View_SimpleTags extends View {
 			// Load the view within the current scope
 			$simpletags = new \Simpletags();
 			$simpletags->set_delimiters(
-				\Config::get('parser.simpletags.delimiters.0', '{'),
-				\Config::get('parser.simpletags.delimiters.1', '}')
+				\Config::get('parser.View_SimpleTags.delimiters.0', '{'),
+				\Config::get('parser.View_SimpleTags.delimiters.1', '}')
 			);
-			$simpletags->set_trigger(\Config::get('parser.simpletags.trigger', 'tag:'));
+			$simpletags->set_trigger(\Config::get('parser.View_SimpleTags.trigger', 'tag:'));
 			$output = $simpletags->parse(file_get_contents($view_filename), $data);
 
 			return $output['content'];
@@ -43,17 +43,6 @@ class View_SimpleTags extends View {
 
 			// Re-throw the exception
 			throw $e;
-		}
-	}
-
-	public static function init()
-	{
-		static $loaded = false;
-
-		if ($loaded === false)
-		{
-			include \Config::get('parser.simpletags.include');
-			$loaded = true;
 		}
 	}
 }
