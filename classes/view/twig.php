@@ -23,19 +23,6 @@ class View_Twig extends View {
 		\Twig_Autoloader::register();
 	}
 
-	public static function load_parser()
-	{
-		if ( ! empty(static::$_parser))
-		{
-			return static::$_parser;
-		}
-
-		$loader = new \Twig_Loader_String();
-		static::$_parser = new \Twig_Environment($loader);
-
-		return static::$_parser;
-	}
-
 	protected static function capture($view_filename, array $view_data)
 	{
 		$data = static::$_global_data;
@@ -57,6 +44,19 @@ class View_Twig extends View {
 	}
 
 	public $extension = 'stags';
+
+	public function parser()
+	{
+		if ( ! empty(static::$_parser))
+		{
+			return static::$_parser;
+		}
+
+		$loader = new \Twig_Loader_String();
+		static::$_parser = new \Twig_Environment($loader);
+
+		return static::$_parser;
+	}
 }
 
 // end of file twig.php

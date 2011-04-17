@@ -23,18 +23,6 @@ class View_Dwoo extends View {
 		\Twig_Autoloader::register();
 	}
 
-	public static function load_parser()
-	{
-		if ( ! empty(static::$_parser))
-		{
-			return static::$_parser;
-		}
-
-		static::$_parser = new Dwoo();
-
-		return static::$_parser;
-	}
-
 	protected static function capture($view_filename, array $view_data)
 	{
 		$data = static::$_global_data;
@@ -55,6 +43,18 @@ class View_Dwoo extends View {
 	}
 
 	public $extension = 'stags';
+
+	public function parser()
+	{
+		if ( ! empty(static::$_parser))
+		{
+			return static::$_parser;
+		}
+
+		static::$_parser = new Dwoo();
+
+		return static::$_parser;
+	}
 }
 
 // end of file dwoo.php

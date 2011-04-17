@@ -18,23 +18,6 @@ class View_SimpleTags extends View {
 
 	protected static $_parser;
 
-	public static function parser()
-	{
-		if ( ! empty(static::$_parser))
-		{
-			return static::$_parser;
-		}
-
-		static::$_parser = new \Simpletags();
-		static::$_parser->set_delimiters(
-			\Config::get('parser.View_SimpleTags.delimiters.0', '{'),
-			\Config::get('parser.View_SimpleTags.delimiters.1', '}')
-		);
-		static::$_parser->set_trigger(\Config::get('parser.View_SimpleTags.trigger', 'tag:'));
-
-		return static::$_parser;
-	}
-
 	protected static function capture($view_filename, array $view_data)
 	{
 		$data = static::$_global_data;
@@ -57,6 +40,23 @@ class View_SimpleTags extends View {
 	}
 
 	public $extension = 'stags';
+
+	public function parser()
+	{
+		if ( ! empty(static::$_parser))
+		{
+			return static::$_parser;
+		}
+
+		static::$_parser = new \Simpletags();
+		static::$_parser->set_delimiters(
+			\Config::get('parser.View_SimpleTags.delimiters.0', '{'),
+			\Config::get('parser.View_SimpleTags.delimiters.1', '}')
+		);
+		static::$_parser->set_trigger(\Config::get('parser.View_SimpleTags.trigger', 'tag:'));
+
+		return static::$_parser;
+	}
 }
 
 // end of file simpletags.php
