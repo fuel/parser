@@ -23,7 +23,7 @@ return array(
 	),
 
 	'View_Dwoo' => array(
-		'include'     => APPPATH.'twig'.DS.'dwooAutoload.php',
+		'include'     => APPPATH.'dwoo'.DS.'dwooAutoload.php',
 	),
 );
 
