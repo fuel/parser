@@ -14,7 +14,7 @@ return array(
 
 	'View_SimpleTags' => array(
 		'include'     => PKGPATH.'parser'.DS.'vendor'.DS.'simpletags.php',
-		'delimiters'  => array('{', '}'),
+		'delimiters'  => array('<<', '>>'),
 		'trigger'     => 'tag:',
 	),
 

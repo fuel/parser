@@ -16,12 +16,25 @@ namespace Parser;
 
 class View_Twig extends View {
 
+	protected static $_parser;
+
 	public static function _init()
 	{
 		\Twig_Autoloader::register();
 	}
 
-	public $extension = 'stags';
+	public static function load_parser()
+	{
+		if ( ! empty(static::$_parser))
+		{
+			return static::$_parser;
+		}
+
+		$loader = new \Twig_Loader_String();
+		static::$_parser = new \Twig_Environment($loader);
+
+		return static::$_parser;
+	}
 
 	protected static function capture($view_filename, array $view_data)
 	{
@@ -30,10 +43,7 @@ class View_Twig extends View {
 
 		try
 		{
-			$loader = new Twig_Loader_String();
-			$twig = new Twig_Environment($loader);
-			$template = $twig->loadTemplate(file_get_contents($view_filename));
-
+			$template = static::parser()->loadTemplate(file_get_contents($view_filename));
 			return $template->render($data);
 		}
 		catch (\Exception $e)
@@ -45,6 +55,8 @@ class View_Twig extends View {
 			throw $e;
 		}
 	}
+
+	public $extension = 'stags';
 }
 
 // end of file twig.php

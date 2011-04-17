@@ -16,12 +16,24 @@ namespace Parser;
 
 class View_Dwoo extends View {
 
+	protected static $_parser;
+
 	public static function _init()
 	{
 		\Twig_Autoloader::register();
 	}
 
-	public $extension = 'stags';
+	public static function load_parser()
+	{
+		if ( ! empty(static::$_parser))
+		{
+			return static::$_parser;
+		}
+
+		static::$_parser = new Dwoo();
+
+		return static::$_parser;
+	}
 
 	protected static function capture($view_filename, array $view_data)
 	{
@@ -30,8 +42,7 @@ class View_Dwoo extends View {
 
 		try
 		{
-			$dwoo = new Dwoo();
-			return $dwoo->get($view_filename, $data);;
+			return static::parser()->get($view_filename, $data);;
 		}
 		catch (\Exception $e)
 		{
@@ -42,6 +53,8 @@ class View_Dwoo extends View {
 			throw $e;
 		}
 	}
+
+	public $extension = 'stags';
 }
 
 // end of file dwoo.php
