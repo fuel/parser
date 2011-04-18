@@ -11,7 +11,7 @@
     // load a Twig template, will load and parse app/views/example.twig
     View::factory('example.twig');
 
-    // load a SimpleTags template, ATTENTION: this one expects app/views/example.tpl
+    // load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
     View::factory('example.dwoo');
 
 ## Installing parsers
