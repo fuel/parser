@@ -46,7 +46,7 @@ class View_Mustache extends View {
 			return static::$_parser;
 		}
 
-		static::$_parser = new Mustache();
+		static::$_parser = new \Mustache();
 
 		return static::$_parser;
 	}

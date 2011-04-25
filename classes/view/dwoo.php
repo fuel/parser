@@ -46,7 +46,7 @@ class View_Dwoo extends View {
 			return static::$_parser;
 		}
 
-		static::$_parser = new Dwoo();
+		static::$_parser = new \Dwoo();
 
 		return static::$_parser;
 	}
