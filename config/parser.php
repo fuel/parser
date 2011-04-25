@@ -7,7 +7,7 @@ return array(
 		'php'       => 'View',
 		'stags'     => 'View_SimpleTags',
 		'twig'      => 'View_Twig',
-		'dwoo'      => array('class' => 'View_Dwoo',     'extension' => '.tpl'),
+		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
 		'mustache'  => 'View_Mustache',
 	),
 
@@ -20,15 +20,15 @@ return array(
 	),
 
 	'View_Twig' => array(
-		'include'     => APPPATH.'twig'.DS.'Autoloader.php',
+		'include'     => APPPATH.'vendor'.DS.'twig'.DS.'Autoloader.php',
 	),
 
 	'View_Dwoo' => array(
-		'include'     => APPPATH.'dwoo'.DS.'dwooAutoload.php',
+		'include'     => APPPATH.'vendor'.DS.'dwoo'.DS.'dwooAutoload.php',
 	),
 
 	'View_Mustache' => array(
-		'include'     => APPPATH.'mustache'.DS.'Mustache.php',
+		'include'     => APPPATH.'vendor'.DS.'mustache'.DS.'Mustache.php',
 	),
 );
 
