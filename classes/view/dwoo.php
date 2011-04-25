@@ -18,11 +18,6 @@ class View_Dwoo extends View {
 
 	protected static $_parser;
 
-	public static function _init()
-	{
-		\Twig_Autoloader::register();
-	}
-
 	protected static function capture($view_filename, array $view_data)
 	{
 		$data = static::$_global_data;
@@ -30,7 +25,7 @@ class View_Dwoo extends View {
 
 		try
 		{
-			return static::parser()->get($view_filename, $data);;
+			return static::parser()->get($view_filename, $data);
 		}
 		catch (\Exception $e)
 		{
