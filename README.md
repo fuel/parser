@@ -2,17 +2,19 @@
 
 ## Usage
 
-    // old usage still valid, will load app/views/example.php
-    View::factory('example');
+```php
+// old usage still valid, will load app/views/example.php
+View::factory('example');
 
-    // load a SimpleTags template, will load and parse app/views/example.stags
-    View::factory('example.stags');
+// load a SimpleTags template, will load and parse app/views/example.stags
+View::factory('example.stags');
 
-    // load a Twig template, will load and parse app/views/example.twig
-    View::factory('example.twig');
+// load a Twig template, will load and parse app/views/example.twig
+View::factory('example.twig');
 
-    // load a SimpleTags template, ATTENTION: this one expects app/views/example.tpl
-    View::factory('example.dwoo');
+// load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
+View::factory('example.dwoo');
+```
 
 ## Installing parsers
 
@@ -24,5 +26,7 @@ You can configure them to be loaded from other locations by copying the parser.p
 
 Currently the drivers still lack a lot of config options they should probably accept. They are currently all configured to work with one instance of their parser library, which is available to config:
 
-    $view = View::factory('example.stags');
-    $view->parser()->set_delimiters('{', '}');
+```php
+$view = View::factory('example.stags');
+$view->parser()->set_delimiters('{', '}');
+```
