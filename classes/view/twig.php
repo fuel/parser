@@ -43,7 +43,7 @@ class View_Twig extends View {
 		}
 	}
 
-	public $extension = 'stags';
+	public $extension = 'twig';
 
 	public function parser()
 	{

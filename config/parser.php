@@ -4,10 +4,11 @@ return array(
 
 	// Register extensions to their parsers, either classname or array config
 	'extensions' => array(
-		'php'     => 'View',
-		'stags'   => 'View_SimpleTags',
-		'twig'    => 'View_Twig',
-		'dwoo'    => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
+		'php'       => 'View',
+		'stags'     => 'View_SimpleTags',
+		'twig'      => 'View_Twig',
+		'dwoo'      => array('class' => 'View_Dwoo',     'extension' => '.tpl'),
+		'mustache'  => array('class' => 'View_Mustache', 'extension' => '.tpl'),
 	),
 
 	// Individual class config by classname
@@ -24,6 +25,10 @@ return array(
 
 	'View_Dwoo' => array(
 		'include'     => APPPATH.'dwoo'.DS.'dwooAutoload.php',
+	),
+
+	'View_Mustache' => array(
+		'include'     => APPPATH.'mustache'.DS.'Mustache.php',
 	),
 );
 

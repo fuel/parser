@@ -37,7 +37,7 @@ class View_Dwoo extends View {
 		}
 	}
 
-	public $extension = 'stags';
+	public $extension = 'tpl';
 
 	public function parser()
 	{
