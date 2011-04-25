@@ -14,7 +14,7 @@
 
 namespace Parser;
 
-class View_Dwoo extends View {
+class View_Mustache extends View {
 
 	protected static $_parser;
 
