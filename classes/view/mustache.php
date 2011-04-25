@@ -37,7 +37,7 @@ class View_Mustache extends View {
 		}
 	}
 
-	public $extension = 'tpl';
+	public $extension = 'mustache';
 
 	public function parser()
 	{

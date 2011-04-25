@@ -8,7 +8,7 @@ return array(
 		'stags'     => 'View_SimpleTags',
 		'twig'      => 'View_Twig',
 		'dwoo'      => array('class' => 'View_Dwoo',     'extension' => '.tpl'),
-		'mustache'  => array('class' => 'View_Mustache', 'extension' => '.tpl'),
+		'mustache'  => 'View_Mustache',
 	),
 
 	// Individual class config by classname
