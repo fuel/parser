@@ -1,5 +1,9 @@
 # Parser package
 
+## Installing
+
+Currently only available as download or clone from Github. Like any other package it must be put in its own 'parser' dir in the packages dir and added to your app/config/config.php as an always loaded package.
+
 ## Usage
 
 ```php
