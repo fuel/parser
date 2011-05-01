@@ -14,7 +14,7 @@
 
 namespace Parser;
 
-class View_SimpleTags extends View {
+class View_SimpleTags extends \View {
 
 	protected static $_parser;
 
