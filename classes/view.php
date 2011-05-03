@@ -34,16 +34,16 @@ class View extends \Fuel\Core\View {
 			$class = $class['class'];
 		}
 
+		// Include necessary files
+		foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
+		{
+			require_once $include;
+		}
+
 		$view = new $class($file, $data, $auto_encode);
 
 		// Set extension when given
 		$extension and $view->extension = $extension;
-
-		// Include necessary files
-		foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
-		{
-			include_once $include;
-		}
 
 		return $view;
 	}
