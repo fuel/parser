@@ -16,10 +16,10 @@ View::factory('example.stags');
 // load a Mustache template, will load and parse app/views/example.mustache
 View::factory('example.mustache');
 
-// THE TWIG & DWOO DRIVERS ARE STILL UNTESTED
-
 // load a Twig template, will load and parse app/views/example.twig
 View::factory('example.twig');
+
+// THE DWOO DRIVER IS STILL UNTESTED, let me know if you got it working
 
 // load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
 View::factory('example.dwoo');
