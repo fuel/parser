@@ -4,7 +4,7 @@
 
 Currently only available as download or clone from Github. Like any other package it must be put in its own 'parser' dir in the packages dir and added to your app/config/config.php as an always loaded package.
 
-*Important:* this package needs a recent version from the core develop branch or RC3. RC2 and RC2.1 do not yet support this package.
+*Important:* this package needs a recent version from the core develop branch. RC2 and RC2.1 do not yet support this package.
 
 ## Usage
 
