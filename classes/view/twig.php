@@ -16,47 +16,63 @@ namespace Parser;
 
 class View_Twig extends \View {
 
-	protected static $_parser;
+    public $extension = 'twig';
+    protected static $_parser;
+    protected static $_parser_loader;
 
-	public static function _init()
-	{
-		\Twig_Autoloader::register();
-	}
+    public static function _init()
+    {
+        \Twig_Autoloader::register();
+    }
 
-	protected static function capture($view_filename, array $view_data)
-	{
-		$data = static::$_global_data;
-		$data = array_merge($data, $view_data);
+    protected static function capture($view_filename, array $view_data)
+    {
+        $data = static::$_global_data;
+        $data = array_merge($data, $view_data);
+        
+        // Extract View name/extension (e.g. "template.twig")
+        $view_name = pathinfo($view_filename, PATHINFO_FILENAME) . '.' . pathinfo($view_filename, PATHINFO_EXTENSION);
+        
+        // Twig Loader
+        $views_paths = \Config::get('parser.View_Twig.views_paths', array(APPPATH . 'views'));
+        \Arr::insert($views_paths, pathinfo($view_filename, PATHINFO_DIRNAME), 0);
+        static::$_parser_loader = new \Twig_Loader_Filesystem($views_paths);
 
-		try
-		{
-			$template = static::parser()->loadTemplate(file_get_contents($view_filename));
-			return $template->render($data);
-		}
-		catch (\Exception $e)
-		{
-			// Delete the output buffer
-			ob_end_clean();
+        try
+        {
+            $template = static::parser()->loadTemplate($view_name);
+            return $template->render($data);
+        } 
+        catch (\Exception $e) 
+        {
+			// @TODO: Some problems with Twig/Fuel exceptions
+            ob_end_clean();	// Delete the output buffer ( silently )
+            throw $e;		// Re-throw the exception
+        }
+    }
+    
+    public function parser()
+    {
+        if (!empty(static::$_parser))
+        {
+            return static::$_parser;
+        }
+        
+        // Twig Environment
+        $twig_env_conf = \Config::get('parser.View_Twig.environment', array('optimizer' => -1));
+        static::$_parser = new \Twig_Environment(static::$_parser_loader, $twig_env_conf);
 
-			// Re-throw the exception
-			throw $e;
-		}
-	}
+        // Twig Lexer
+        $twig_lexer_conf = \Config::get('parser.View_Twig.delimiters', null);
+        if (isset($twig_lexer_conf))
+        {
+            $twig_lexer = new \Twig_Lexer(static::$_parser, $twig_lexer_conf);
+            static::$_parser->setLexer($twig_lexer);
+        }
 
-	public $extension = 'twig';
+        return static::$_parser;
+    }
 
-	public function parser()
-	{
-		if ( ! empty(static::$_parser))
-		{
-			return static::$_parser;
-		}
-
-		$loader = new \Twig_Loader_String();
-		static::$_parser = new \Twig_Environment($loader);
-
-		return static::$_parser;
-	}
 }
 
 // end of file twig.php
