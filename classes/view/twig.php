@@ -16,7 +16,6 @@ namespace Parser;
 
 class View_Twig extends \View {
 
-    public $extension = 'twig';
     protected static $_parser;
     protected static $_parser_loader;
 
@@ -30,12 +29,12 @@ class View_Twig extends \View {
         $data = static::$_global_data;
         $data = array_merge($data, $view_data);
         
-        // Extract View name/extension (e.g. "template.twig")
-        $view_name = pathinfo($view_filename, PATHINFO_FILENAME) . '.' . pathinfo($view_filename, PATHINFO_EXTENSION);
+        // Extract View name/extension (ex. "template.twig")
+        $view_name = pathinfo($view_filename, PATHINFO_BASENAME);
         
         // Twig Loader
         $views_paths = \Config::get('parser.View_Twig.views_paths', array(APPPATH . 'views'));
-        \Arr::insert($views_paths, pathinfo($view_filename, PATHINFO_DIRNAME), 0);
+        array_unshift($views_paths, pathinfo($view_filename, PATHINFO_DIRNAME));
         static::$_parser_loader = new \Twig_Loader_Filesystem($views_paths);
 
         try
@@ -46,14 +45,16 @@ class View_Twig extends \View {
         catch (\Exception $e) 
         {
 			// @TODO: Some problems with Twig/Fuel exceptions
-            ob_end_clean();	// Delete the output buffer ( silently )
+            ob_end_clean();	// Delete the output buffer
             throw $e;		// Re-throw the exception
         }
     }
     
+    public $extension = 'twig';
+	
     public function parser()
     {
-        if (!empty(static::$_parser))
+        if ( ! empty(static::$_parser))
         {
             return static::$_parser;
         }
