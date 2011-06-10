@@ -29,11 +29,8 @@ class View_Mustache extends \View {
 		}
 		catch (\Exception $e)
 		{
-			// Delete the output buffer
-			ob_end_clean();
-
-			// Re-throw the exception
-			throw $e;
+			ob_end_clean();	// Delete the output buffer
+			throw $e;		// Re-throw the exception
 		}
 	}
 
