@@ -23,9 +23,9 @@ class View extends \Fuel\Core\View {
 
 	public static function factory($file = null, array $data = null, $auto_encode = null)
 	{
-		$extension = pathinfo($file, PATHINFO_EXTENSION);
-		$class     = \Config::get('parser.extensions.'.$extension, get_called_class());
-		$file      = pathinfo($file, PATHINFO_DIRNAME).DS.pathinfo($file, PATHINFO_FILENAME);
+		$extension	= pathinfo($file, PATHINFO_EXTENSION);
+		$class		= \Config::get('parser.extensions.'.$extension, get_called_class());
+		$file		= basename($file, '.'.$extension);
 
 		// Class can be an array config
 		if (is_array($class))
