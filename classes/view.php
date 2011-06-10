@@ -16,37 +16,37 @@ namespace Parser;
 
 class View extends \Fuel\Core\View {
 
-	public static function _init()
-	{
-		\Config::load('parser', true);
-	}
+    public static function _init()
+    {
+        \Config::load('parser', true);
+    }
 
-	public static function factory($file = null, array $data = null, $auto_encode = null)
-	{
-		$extension = pathinfo($file, PATHINFO_EXTENSION);
-		$class     = \Config::get('parser.extensions.'.$extension, get_called_class());
-		$file      = pathinfo($file, PATHINFO_DIRNAME).DS.pathinfo($file, PATHINFO_FILENAME);
+    public static function factory($file = null, array $data = null, $auto_encode = null)
+    {
+        $extension  = pathinfo($file, PATHINFO_EXTENSION);	
+        $class      = \Config::get('parser.extensions.'.$extension, get_called_class());                               
+        $file       = basename($file, '.'.$extension);
 
-		// Class can be an array config
-		if (is_array($class))
-		{
-			$class['extension'] and $extension = $class['extension'];
-			$class = $class['class'];
-		}
+        // Class can be an array config
+        if (is_array($class))
+        {
+            $class['extension'] and $extension = $class['extension'];
+            $class = $class['class'];
+        }
 
-		// Include necessary files
-		foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
-		{
-			require_once $include;
-		}
+        // Include necessary files
+        foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
+        {
+            require_once $include;
+        }
 
-		$view = new $class($file, $data, $auto_encode);
+        $view = new $class($file, $data, $auto_encode);
 
-		// Set extension when given
-		$extension and $view->extension = $extension;
+        // Set extension when given
+        $extension and $view->extension = $extension;
 
-		return $view;
-	}
+        return $view;
+    }
 }
 
 // end of file view.php

@@ -39,15 +39,15 @@ class View_Twig extends \View {
 
         try
         {
-            $template = static::parser()->loadTemplate($view_name);
-            return $template->render($data);
-        } 
-        catch (\Exception $e) 
-        {
-			// @TODO: Some problems with Twig/Fuel exceptions
-            ob_end_clean();	// Delete the output buffer
-            throw $e;		// Re-throw the exception
+            return static::parser()->loadTemplate($view_name)->render($data);
         }
+        catch (\Exception $e)
+        {
+            ob_end_clean(); // Delete the output buffer
+            throw $e;       // Re-throw the exception
+        }
+        
+
     }
     
     public $extension = 'twig';
@@ -73,7 +73,6 @@ class View_Twig extends \View {
 
         return static::$_parser;
     }
-
 }
 
 // end of file twig.php
