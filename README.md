@@ -11,7 +11,7 @@ RC2 and RC2.1 do not yet support this package.
 
 ## Installing parsers
 
-Only SimpleTags parser is included, for other libraries you'll have to download them yourself and put library in `app/vendor/lib_name` (**capitalized lib_name**).
+Only SimpleTags parser is included, for other libraries you'll have to download them yourself and put library in `app/vendor/Lib_name` (**capitalized Lib_name**).
 
 You can configure them to be loaded from other locations by copying the parser.php config file to your app and editing it.
 
