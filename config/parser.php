@@ -14,11 +14,12 @@ return array(
 	),
 
 
+
 	// ------------------------------------------------------------------------
 	// Individual class config by classname
 	// ------------------------------------------------------------------------
 
-
+	
 	// SIMPLETAGS ( https://bitbucket.org/dhorrigan/simpletags/overview )
 	// ------------------------------------------------------------------------
 	'View_SimpleTags' => array(
@@ -27,7 +28,7 @@ return array(
 		'trigger' => 'tag:',
 	),
 
-
+	
 	// TWIG ( http://www.twig-project.org/documentation )
 	// ------------------------------------------------------------------------
 	'View_Twig' => array(
@@ -51,6 +52,7 @@ return array(
 			'optimizations'         => -1,
 		),
 	),
+	
 
 	// DWOO ( http://wiki.dwoo.org/ )
 	// ------------------------------------------------------------------------
@@ -71,11 +73,18 @@ return array(
 		),
 	),
 
-
+	
 	// MUSTACHE ( https://github.com/bobthecow/mustache.php )
 	// ------------------------------------------------------------------------
 	'View_Mustache' => array(
 		'include' => APPPATH . 'vendor' . DS . 'Mustache' . DS . 'Mustache.php',
+	    
+		'delimiters' => array('{{', '}}'),
+	    
+		'environment' => array(
+			'charset'   => 'UTF-8',
+			'pragmas'   => array(),
+		),
 	),
 );
 
