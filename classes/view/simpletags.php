@@ -31,10 +31,8 @@ class View_SimpleTags extends \View {
 		}
 		catch (\Exception $e)
 		{
-			// Delete the output buffer
+			// Delete the output buffer & re-throw the exception
 			ob_end_clean();
-
-			// Re-throw the exception
 			throw $e;
 		}
 	}

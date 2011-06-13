@@ -29,8 +29,9 @@ class View_Mustache extends \View {
 		}
 		catch (\Exception $e)
 		{
-			ob_end_clean();	// Delete the output buffer
-			throw $e;		// Re-throw the exception
+			// Delete the output buffer & re-throw the exception
+			ob_end_clean();
+			throw $e;
 		}
 	}
 
@@ -38,20 +39,20 @@ class View_Mustache extends \View {
 
 	public function parser()
 	{
-	    if ( ! empty(static::$_parser))
-	    {
+		if ( ! empty(static::$_parser))
+		{
 			return static::$_parser;
-	    }
+		}
 
-	    $options = array(
-			'delimiters'    => \Config::get('parser.View_Mustache.delimiters', array('{{','}}')),
-			'charset'	    => \Config::get('parser.View_Mustache.environment.charset', 'UTF-8'),
-			'pragmas'	    => \Config::get('parser.View_Mustache.environment.pragmas', array()),
-	    );
+		$options = array(
+			'delimiters'  => \Config::get('parser.View_Mustache.delimiters', array('{{','}}')),
+			'charset'     => \Config::get('parser.View_Mustache.environment.charset', 'UTF-8'),
+			'pragmas'     => \Config::get('parser.View_Mustache.environment.pragmas', array()),
+		);
 
-	    static::$_parser = new \Mustache(null, null, null, $options);
+		static::$_parser = new \Mustache(null, null, null, $options);
 
-	    return static::$_parser;
+		return static::$_parser;
 	}
 }
 

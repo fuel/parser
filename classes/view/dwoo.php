@@ -31,8 +31,9 @@ class View_Dwoo extends \View {
 		}
 		catch (\Exception $e)
 		{
-			ob_end_clean();	// Delete the output buffer
-			throw $e;		// Re-throw the exception
+			// Delete the output buffer & re-throw the exception
+			ob_end_clean();
+			throw $e;
 		}
 	}
 
@@ -46,7 +47,7 @@ class View_Dwoo extends \View {
 		}
 
 		// Parser
-		static::$_parser = new \Dwoo();       
+		static::$_parser = new \Dwoo();
 		static::$_parser->setCacheDir(\Config::get('parser.View_Dwoo.environment.cache_dir'));
 		static::$_parser->setCacheTime(\Config::get('parser.View_Dwoo.environment.cache_time'));
 		static::$_parser->setCompileDir(\Config::get('parser.View_Dwoo.environment.compile_dir'));

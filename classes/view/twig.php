@@ -41,10 +41,11 @@ class View_Twig extends \View {
 		{
 			return static::parser()->loadTemplate($view_name)->render($data);
 		}
-			catch (\Exception $e)
+		catch (\Exception $e)
 		{
-			ob_end_clean();	// Delete the output buffer
-			throw $e;		// Re-throw the exception
+			// Delete the output buffer & re-throw the exception
+			ob_end_clean();
+			throw $e;
 		}
 	}
 
