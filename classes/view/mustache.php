@@ -38,14 +38,20 @@ class View_Mustache extends \View {
 
 	public function parser()
 	{
-		if ( ! empty(static::$_parser))
-		{
+	    if ( ! empty(static::$_parser))
+	    {
 			return static::$_parser;
-		}
+	    }
 
-		static::$_parser = new \Mustache();
+	    $options = array(
+			'delimiters'    => \Config::get('parser.View_Mustache.delimiters', array('{{','}}')),
+			'charset'	    => \Config::get('parser.View_Mustache.environment.charset', 'UTF-8'),
+			'pragmas'	    => \Config::get('parser.View_Mustache.environment.pragmas', array()),
+	    );
 
-		return static::$_parser;
+	    static::$_parser = new \Mustache(null, null, null, $options);
+
+	    return static::$_parser;
 	}
 }
 
