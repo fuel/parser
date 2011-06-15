@@ -25,7 +25,7 @@ class View extends \Fuel\Core\View {
 	{
 		$extension  = pathinfo($file, PATHINFO_EXTENSION);
 		$class      = \Config::get('parser.extensions.'.$extension, get_called_class());
-		$file       = substr($file, 0, (-strlen($extension) - 1));
+		$file       = $extension ? substr($file, 0, (-strlen($extension) - 1)) : $file;
 
 		// Class can be an array config
 		if (is_array($class))
