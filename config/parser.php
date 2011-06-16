@@ -11,6 +11,7 @@ return array(
 		'mustache'  => 'View_Mustache',
 		'stags'     => 'View_SimpleTags',
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
+		'jade'      => 'View_Jade',
 	),
 
 
@@ -77,6 +78,14 @@ return array(
 			'pragmas' => array(),
 		),
 	),
+
+	// JADE PHP ( https://github.com/everzet/jade.php )
+	// See notes in /parser/classes/view/jade.php regarding jade.autoload.php
+	// ------------------------------------------------------------------------
+	'View_Jade' => array(
+		'include' => APPPATH . 'vendor' . DS . 'Jade'. DS . 'jade.autoload.php', 
+	),  
+	
 );
 
 // end of file parser.php
