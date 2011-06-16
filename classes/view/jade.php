@@ -1,45 +1,45 @@
 <?php
 /**
  *
-	* Sourced from: 
-	*   https://github.com/jeremyf76/jade.ko3/tree/kohana3/classes/jade/
-	*   https://github.com/jeremyf76/jade.ko3/blob/kohana3/classes/jade/core.php
-	* 
-	* Modified by:
-	*   Evan Tishuk (https://github.com/evantishuk/)
-	*
-	* 
-	* Using the above source, it was (quickly) modified to work with FuelPHP's 
-	* Parser package (https://github.com/fuel/parser).  Undoubtedly, this could 
-	* benefit from a more experienced eye within the FuelPHP community.  And since
+ * Sourced from: 
+ *   https://github.com/jeremyf76/jade.ko3/tree/kohana3/classes/jade/
+ *   https://github.com/jeremyf76/jade.ko3/blob/kohana3/classes/jade/core.php
+ * 
+ * Modified by:
+ *   Evan Tishuk (https://github.com/evantishuk/)
+ *
+ * 
+ * Using the above source, it was (quickly) modified to work with FuelPHP's 
+ * Parser package (https://github.com/fuel/parser).  Undoubtedly, this could 
+ * benefit from a more experienced eye within the FuelPHP community.  And since
  * it was borrowed from a Kohana module, it probably needs some further 
-	* revision and due props given to Jeremy Fowler (https://github.com/jeremyf76) 
-	* and Konstantin Kudryashov (https://github.com/everzet).
-	*
-	* 1: "mkdir Jade" in /app/vendor/
-	* 2: download Jade PHP from https://github.com/everzet/jade.php
-	* 3: Unzip the Jade PHP archive into the newly created Jade directory
-	* 4: Navigate to the Jade directory (cd /app/vendor/Jade) and then 
-	* 5: Create a file named "jade.autoloader.php" in /app/vendor/Jade/
-	* 6: Put the following (and only the following?) into that file:
-	
-	     Autoloader::add_namespaces(array(
-       'Everzet' => __DIR__.'/src/Everzet',
-       'Everzet\\Jade' => __DIR__.'/src/Everzet/Jade',
-       'Everzet\\Jade\\Lexer' => __DIR__.'/src/Everzet/Jade/Lexer',
-       'Everzet\\Jade\\Dumper' => __DIR__.'/src/Everzet/Jade/Dumper',
-       'Everzet\\Jade\\Visitor' => __DIR__.'/src/Everzet/Jade/Visitor',
-       'Everzet\\Jade\\Filter' => __DIR__.'/src/Everzet/Jade/Filter',
-       'Everzet\\Jade\\Node' => __DIR__.'/src/Everzet/Jade/Node/',
-	     ));
-						
-	* 7: Make sure that /parser/config/parser.php has jade.autoloader.php specifed 
-	*    be included.
-	* 8: Create or edit a Controller and View to see Jade in action. Here is 
-	*    some sample code:
-	*
-	*      http://forum.kohanaframework.org/discussion/7295/new-jade-module-haml-like-template-compiler-for-php5.3
-	* 
+ * revision and due props given to Jeremy Fowler (https://github.com/jeremyf76) 
+ * and Konstantin Kudryashov (https://github.com/everzet).
+ *
+ * 1: "mkdir Jade" in /app/vendor/
+ * 2: download Jade PHP from https://github.com/everzet/jade.php
+ * 3: Unzip the Jade PHP archive into the newly created Jade directory
+ * 4: Navigate to the Jade directory (cd /app/vendor/Jade) and then 
+ * 5: Create a file named "jade.autoloader.php" in /app/vendor/Jade/
+ * 6: Put the following (and only the following?) into that file:  
+
+			Autoloader::add_namespaces(array(
+				'Everzet' => __DIR__.'/src/Everzet',
+				'Everzet\\Jade' => __DIR__.'/src/Everzet/Jade',
+				'Everzet\\Jade\\Lexer' => __DIR__.'/src/Everzet/Jade/Lexer',
+				'Everzet\\Jade\\Dumper' => __DIR__.'/src/Everzet/Jade/Dumper',
+				'Everzet\\Jade\\Visitor' => __DIR__.'/src/Everzet/Jade/Visitor',
+				'Everzet\\Jade\\Filter' => __DIR__.'/src/Everzet/Jade/Filter',
+				'Everzet\\Jade\\Node' => __DIR__.'/src/Everzet/Jade/Node/',
+			));
+			
+ * 7: Make sure that /parser/config/parser.php has jade.autoloader.php specifed 
+ *    be included.
+ * 8: Create or edit a Controller and View to see Jade in action. Here is 
+ *    some sample code:
+ *
+ *      http://forum.kohanaframework.org/discussion/7295/new-jade-module-haml-like-template-compiler-for-php5.3
+ * 
  */
 
 namespace Parser;
@@ -59,7 +59,7 @@ class View_Jade extends \View {
 	protected $_file;                          // View filename	
 	protected $_data               = array();  // Array of local variables
 	protected $_jade               = null;     // Jade Engine
- public $extension              = '.jade';  // (originally no period, problem?)
+	public $extension              = '.jade';  // (originally no period, problem?)
 	protected static $_global_data = array();
 	
 	/**
@@ -282,7 +282,7 @@ class View_Jade extends \View {
 	public function set_filename($file)
 	{
   
-  //find_file($directory, $file, $ext = '.php', $multiple = false, $cache = true)
+		//find_file($directory, $file, $ext = '.php', $multiple = false, $cache = true)
 		if (($path = \Fuel::find_file('views', $file, $this->extension)) === FALSE)
 		{
 			throw new \Exception('The requested view '.$file.' could not be found');
