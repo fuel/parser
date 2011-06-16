@@ -24,5 +24,4 @@ Autoloader::add_classes(array(
 ));
 
 
-
 /* End of file bootstrap.php */

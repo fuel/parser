@@ -16,8 +16,12 @@
 	* revision and due props given to Jeremy Fowler (https://github.com/jeremyf76) 
 	* and Konstantin Kudryashov (https://github.com/everzet).
 	*
-	* 1: Create a file named "jade.autoloader.php" in /app/vendor/Jade/
-	* 2: Put the following (and only the following?) in that file:
+	* 1: "mkdir Jade" in /app/vendor/
+	* 2: download Jade PHP from https://github.com/everzet/jade.php
+	* 3: Unzip the Jade PHP archive into the newly created Jade directory
+	* 4: Navigate to the Jade directory (cd /app/vendor/Jade) and then 
+	* 5: Create a file named "jade.autoloader.php" in /app/vendor/Jade/
+	* 6: Put the following (and only the following?) into that file:
 	
 	     Autoloader::add_namespaces(array(
        'Everzet' => __DIR__.'/src/Everzet',
@@ -29,8 +33,13 @@
        'Everzet\\Jade\\Node' => __DIR__.'/src/Everzet/Jade/Node/',
 	     ));
 						
-	* 3: Make sure that /parser/config/parser.php has jade.autoloader.php specifed 
+	* 7: Make sure that /parser/config/parser.php has jade.autoloader.php specifed 
 	*    be included.
+	* 8: Create or edit a Controller and View to see Jade in action. Here is 
+	*    some sample code:
+	*
+	*      http://forum.kohanaframework.org/discussion/7295/new-jade-module-haml-like-template-compiler-for-php5.3
+	* 
  */
 
 namespace Parser;
@@ -40,7 +49,6 @@ use Everzet\Jade\Parser;
 use Everzet\Jade\Lexer\Lexer;
 use Everzet\Jade\Dumper\PHPDumper;
 use Everzet\Jade\Visitor\AutotagsVisitor;
-
 use Everzet\Jade\Filter\JavaScriptFilter;
 use Everzet\Jade\Filter\CDATAFilter;
 use Everzet\Jade\Filter\PHPFilter;
@@ -136,23 +144,6 @@ class View_Jade extends \View {
 			self::$_global_data[$key] = $value;
 		}
 	}
-
-	/**
-	 * Assigns a global variable by reference, similar to [View::bind], except
-	 * that the variable will be accessible to all views.
-	 *
-	 *     Jade::bind_global($key, $value);
-	 *
-	 * @param   string  variable name 
-	 * @param   mixed   referenced variable
-	 * @return  void
-	 */
-	public static function bind_global($key, & $value)
-	{
-		self::$_global_data[$key] =& $value;
-	}
-
-
   
 	/**
 	 * Sets the initial jade template filename and local data. Views should almost

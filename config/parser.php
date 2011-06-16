@@ -83,7 +83,7 @@ return array(
 	// See notes in /parser/classes/view/jade.php regarding jade.autoload.php
 	// ------------------------------------------------------------------------
 	'View_Jade' => array(
-		'include' => APPPATH . 'vendor' . DS . 'Jade'. DS . 'jade.autoload.php', 
+		'include' => APPPATH.'vendor'.DS.'Jade'.DS.'jade.autoload.php', 
 	),  
 	
 );
