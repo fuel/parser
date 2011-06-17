@@ -12,6 +12,7 @@ return array(
 		'stags'     => 'View_SimpleTags',
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
 		'jade'      => 'View_Jade',
+    'haml'      => 'View_Haml',
 	),
 
 
@@ -80,12 +81,18 @@ return array(
 	),
 
 	// JADE PHP ( https://github.com/everzet/jade.php )
-	// See notes in /parser/classes/view/jade.php regarding jade.autoload.php
+	// See notes in /parser/classes/view/jade.php 
 	// ------------------------------------------------------------------------
 	'View_Jade' => array(
 		'include' => APPPATH.'vendor'.DS.'Jade'.DS.'autoload.php.dist',
 		'cache_dir' => APPPATH.'cache'.DS.'jade'.DS,
 	),
+  
+  // HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
+	'View_Haml'   => array(
+		'include'   => APPPATH.'vendor'.DS.'phamlp'.DS.'haml'.DS.'HamlParser.php', 
+		'cache_dir' => APPPATH.'cache'.DS.'haml',
+	),  
 	
 );
 
