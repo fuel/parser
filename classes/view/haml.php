@@ -44,11 +44,11 @@ class View_Haml extends \View {
 		return static::$_parser;
 	}
   
-  // Jade stores cached templates as the filename in plain text,
+	// Jade stores cached templates as the filename in plain text,
 	// so there is a high chance of name collisions (ex: index.jade).
 	// This function attempts to create a unique directory for each
 	// compiled template.
-  // TODO: Extend Jade's caching class?
+	// TODO: Extend Jade's caching class?
 	public function cache_init($file_path)
 	{
   

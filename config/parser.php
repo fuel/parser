@@ -12,7 +12,7 @@ return array(
 		'stags'     => 'View_SimpleTags',
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
 		'jade'      => 'View_Jade',
-    'haml'      => 'View_Haml',
+		'haml'      => 'View_Haml',
 	),
 
 
@@ -88,7 +88,7 @@ return array(
 		'cache_dir' => APPPATH.'cache'.DS.'jade'.DS,
 	),
   
-  // HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
+	// HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
 	'View_Haml'   => array(
 		'include'   => APPPATH.'vendor'.DS.'phamlp'.DS.'haml'.DS.'HamlParser.php', 
 		'cache_dir' => APPPATH.'cache'.DS.'haml',
