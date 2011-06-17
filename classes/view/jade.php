@@ -27,37 +27,14 @@ use Everzet\Jade\Filter\CSSFilter;
 class View_Jade extends \View {
 
 	protected static $_jade;
+  protected static $_cache;
 
 	protected static function capture($view_filename, array $view_data)
 	{
-		// Import the view variables to local namespace
-		$view_data AND extract($view_data, EXTR_SKIP);
+		static::cache_init($view_filename);
 
-		if (static::$_global_data)
-		{
-			// Import the global view variables to local namespace and maintain references
-			extract(static::$_global_data, EXTR_REFS);
-		}
-		
-		// Capture the view output
-		ob_start();
-
-		try
-		{
-			// Load the view within the current scope
-      eval('?>'.static::parser()->render($view_filename));
-		}
-		catch (Exception $e)
-		{
-			// Delete the output buffer
-			ob_end_clean();
-
-			// Re-throw the exception
-			throw $e;
-		}
-
-		// Get the captured output and close the buffer
-		return ob_get_clean();
+		$file = static::parser()->cache($view_filename);
+		return parent::capture($file, $view_data);
 	}
 
 	public $extension = 'jade';
@@ -77,9 +54,27 @@ class View_Jade extends \View {
 		$dumper->registerFilter('php', new PHPFilter());
 		$dumper->registerFilter('style', new CSSFilter());
 
-		static::$_jade = new Jade($parser, $dumper);
+		static::$_jade = new Jade($parser, $dumper, static::$_cache);
 
 		return static::$_jade;
+	}
+
+	// Jade stores cached templates as the filename in plain text,
+	// so there is a high chance of name collisions (ex: index.jade).
+	// This function attempts to create a unique directory for each
+	// compiled template.
+	public function cache_init($file_path)
+	{
+		$cache_key = md5($file_path);
+		$cache_path = \Config::get('parser.View_Jade.cache_dir', null)
+			. substr($cache_key, 0, 2) . DS . substr($cache_key, 2, 2);
+
+		if ($cache_path !== null AND !is_dir($cache_path))
+		{
+			mkdir($cache_path, 0777, true);
+		}
+
+		static::$_cache = $cache_path;
 	}
 
 }
