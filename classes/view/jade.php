@@ -67,9 +67,9 @@ class View_Jade extends \View {
 	{
 		$cache_key = md5($file_path);
 		$cache_path = \Config::get('parser.View_Jade.cache_dir', null)
-			. substr($cache_key, 0, 2) . DS . substr($cache_key, 2, 2);
+			.substr($cache_key, 0, 2).DS.substr($cache_key, 2, 2);
 
-		if ($cache_path !== null AND !is_dir($cache_path))
+		if ($cache_path !== null AND ! is_dir($cache_path))
 		{
 			mkdir($cache_path, 0777, true);
 		}
