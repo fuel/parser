@@ -27,7 +27,7 @@ use Everzet\Jade\Filter\CSSFilter;
 class View_Jade extends \View {
 
 	protected static $_jade;
-  protected static $_cache;
+	protected static $_cache;
 
 	protected static function capture($view_filename, array $view_data)
 	{
