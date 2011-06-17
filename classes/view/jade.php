@@ -138,8 +138,8 @@ class View_Jade extends \View {
 	*/ 
 	public function set_filename($file)
 	{
-  
-  //find_file($directory, $file, $ext = '.php', $multiple = false, $cache = true)
+
+		//find_file($directory, $file, $ext = '.php', $multiple = false, $cache = true)
 		if (($path = \Fuel::find_file('views', $file, $this->extension)) === FALSE)
 		{
 			throw new \Exception('The requested view '.$file.' could not be found');
