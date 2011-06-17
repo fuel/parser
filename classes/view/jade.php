@@ -14,15 +14,7 @@
 
 namespace Parser;
 
-use Everzet\Jade\Jade;
-use Everzet\Jade\Parser;
-use Everzet\Jade\Lexer\Lexer;
-use Everzet\Jade\Dumper\PHPDumper;
-use Everzet\Jade\Visitor\AutotagsVisitor;
-use Everzet\Jade\Filter\JavaScriptFilter;
-use Everzet\Jade\Filter\CDATAFilter;
-use Everzet\Jade\Filter\PHPFilter;
-use Everzet\Jade\Filter\CSSFilter;
+use Everzet\Jade;
 
 class View_Jade extends \View {
 
@@ -46,15 +38,15 @@ class View_Jade extends \View {
 			return static::$_parser;
 		}
 
-		$parser = new Parser(new Lexer());
-		$dumper = new PHPDumper();
-		$dumper->registerVisitor('tag', new AutotagsVisitor());
-		$dumper->registerFilter('javascript', new JavaScriptFilter());
-		$dumper->registerFilter('cdata', new CDATAFilter());
-		$dumper->registerFilter('php', new PHPFilter());
-		$dumper->registerFilter('style', new CSSFilter());
+		$parser = new Jade\Parser(new Jade\Lexer\Lexer());
+		$dumper = new Jade\Dumper\PHPDumper();
+		$dumper->registerVisitor('tag', new Jade\Visitor\AutotagsVisitor());
+		$dumper->registerFilter('javascript', new Jade\Filter\JavaScriptFilter());
+		$dumper->registerFilter('cdata', new Jade\Filter\CDATAFilter());
+		$dumper->registerFilter('php', new Jade\Filter\PHPFilter());
+		$dumper->registerFilter('style', new Jade\Filter\CSSFilter());
 
-		static::$_jade = new Jade($parser, $dumper, static::$_cache);
+		static::$_jade = new Jade\Jade($parser, $dumper, static::$_cache);
 
 		return static::$_jade;
 	}
