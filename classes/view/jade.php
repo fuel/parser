@@ -19,25 +19,10 @@
  * 1: "mkdir Jade" in /app/vendor/
  * 2: download Jade PHP from https://github.com/everzet/jade.php
  * 3: Unzip the Jade PHP archive into the newly created Jade directory
- * 4: Navigate to the Jade directory (cd /app/vendor/Jade) and then 
- * 5: Create a file named "jade.autoloader.php" in /app/vendor/Jade/
- * 6: Put the following (and only the following?) into that file:  
-
-			Autoloader::add_namespaces(array(
-				'Everzet' => __DIR__.'/src/Everzet',
-				'Everzet\\Jade' => __DIR__.'/src/Everzet/Jade',
-				'Everzet\\Jade\\Lexer' => __DIR__.'/src/Everzet/Jade/Lexer',
-				'Everzet\\Jade\\Dumper' => __DIR__.'/src/Everzet/Jade/Dumper',
-				'Everzet\\Jade\\Visitor' => __DIR__.'/src/Everzet/Jade/Visitor',
-				'Everzet\\Jade\\Filter' => __DIR__.'/src/Everzet/Jade/Filter',
-				'Everzet\\Jade\\Node' => __DIR__.'/src/Everzet/Jade/Node/',
-			));
-			
- * 7: Make sure that /parser/config/parser.php has jade.autoloader.php specifed 
- *    be included.
- * 8: Create or edit a Controller and View to see Jade in action. Here is 
+ * 4: Make sure that /parser/config/parser.php has autoloader.php.dist 
+	*    specified to be included.
+ * 5: Create or edit a Controller and View to see Jade in action. Here is 
  *    some sample code:
- *
  *      http://forum.kohanaframework.org/discussion/7295/new-jade-module-haml-like-template-compiler-for-php5.3
  * 
  */
@@ -62,22 +47,7 @@ class View_Jade extends \View {
 	public $extension              = '.jade';  // (originally no period, problem?)
 	protected static $_global_data = array();
 	
-	/**
-	 * Returns a new Jade object. If you do not define the "file" parameter,
-	 * you must call [View::set_filename].
-	 *
-	 *     $view = Jade::factory($file);
-	 *
-	 * @param   string  view filename
-	 * @param   array   array of values
-	 * @return  View
-	 */
-	public static function factory($file = NULL, array $data = NULL)
-	{
-		return new self($file, $data);
-	}
-
-	/**
+		/**
 	 * Captures the output that is generated when a view is included.
 	 * The view data will be extracted to make local variables. This method
 	 * is static to prevent object scope resolution.
@@ -120,31 +90,7 @@ class View_Jade extends \View {
 		return ob_get_clean();
 	}
 
-	/**
-	 * Sets a global variable, similar to [View::set], except that the
-	 * variable will be accessible to all views.
-	 *
-	 *     Jade::set_global($name, $value);
-	 *
-	 * @param   string  variable name or an array of variables
-	 * @param   mixed   value
-	 * @return  void
-	 */
-	public static function set_global($key, $value = NULL)
-	{
-		if (is_array($key))
-		{
-			foreach ($key as $key2 => $value)
-			{
-				self::$_global_data[$key2] = $value;
-			}
-		}
-		else 
-		{
-			self::$_global_data[$key] = $value;
-		}
-	}
-  
+ 
 	/**
 	 * Sets the initial jade template filename and local data. Views should almost
 	 * always only be created using [Jade::factory].
@@ -158,6 +104,7 @@ class View_Jade extends \View {
 	 */
 	public function __construct($file = NULL, array $data = NULL)
 	{
+	
 		if ($file !== NULL)
 		{
 			$this->set_filename($file);
@@ -179,96 +126,6 @@ class View_Jade extends \View {
 		$this->_jade = new Engine($parser, $dumper);
 	}
 
-	/**
-	 * Magic method, searches for the given variable and returns its value.
-	 * Local variables will be returned before global variables.
-	 *
-	 *     $value = $view->foo;
-	 *
-	 * [!!] If the variable has not yet been set, an exception will be thrown.
-	 *
-	 * @param   string  variable name
-	 * @return  mixed
-	 * @throws  Exception
-	 */
-	public function & __get($key)
-	{
-		if (isset($this->_data[$key]))
-		{
-			return $this->_data[$key];
-		}
-		elseif (isset(self::$_global_data[$key]))
-		{
-			return self::$_global_data[$key];
-		}
-		else
-		{
-			throw new \Exception('View variable is not set: '.$key);
-		}
-	}
-
-	/**
-	 * Magic method, calls [View::set] with the same parameters.
-	 *
-	 *     $view->foo = 'something';
-	 *
-	 * @param   string  variable name
-	 * @param   mixed   value
-	 * @return  void
-	 */
-	public function __set($key, $value)
-	{
-		$this->set($key, $value);
-	}
-
-	/**
-	 * Magic method, determines if a variable is set.
-	 *
-	 *     isset($view->foo);
-	 *
-	 * [!!] `NULL` variables are not considered to be set by [isset](http://php.net/isset).
-	 *
-	 * @param   string  variable name
-	 * @return  boolean
-	 */
-	public function __isset($key)
-	{
-		return (isset($this->_data[$key]) OR isset(self::$_global_data[$key]));
-	}
-
-	/**
-	 * Magic method, unsets a given variable.
-	 *
-	 *     unset($view->foo);
-	 *
-	 * @param   string  variable name
-	 * @return  void
-	 */
-	public function __unset($key)
-	{
-		unset($this->_data[$key], self::$_global_data[$key]);
-	}
-
-	/**
-	 * Magic method, returns the output of [View::render].
-	 *
-	 * @return  string
-	 * @uses    View::render
-	 */
-	public function __toString()
-	{
-		try
-		{
-			return $this->render();
-		}
-		catch (Exception $e)
-		{
-			// Display the exception message
-			throw \Exception($e);
-
-			return '';
-		}
-	}
 
 	/**
 	 * Sets the view filename.
@@ -278,11 +135,11 @@ class View_Jade extends \View {
 	 * @param   string  view filename
 	 * @return  View
 	 * @throws  Exception
-	 */
+	*/ 
 	public function set_filename($file)
 	{
   
-		//find_file($directory, $file, $ext = '.php', $multiple = false, $cache = true)
+  //find_file($directory, $file, $ext = '.php', $multiple = false, $cache = true)
 		if (($path = \Fuel::find_file('views', $file, $this->extension)) === FALSE)
 		{
 			throw new \Exception('The requested view '.$file.' could not be found');
@@ -293,61 +150,8 @@ class View_Jade extends \View {
 
 		return $this;
 	}
-
-	/**
-	 * Assigns a variable by name. Assigned values will be available as a
-	 * variable within the view file:
-	 *
-	 *     // This value can be accessed as $foo within the view
-	 *     $view->set('foo', 'my value');
-	 *
-	 * You can also use an array to set several values at once:
-	 *
-	 *     // Create the values $food and $beverage in the view
-	 *     $view->set(array('food' => 'bread', 'beverage' => 'water'));
-	 *
-	 * @param   string   variable name or an array of variables
-	 * @param   mixed    value
-	 * @return  $this
-	 */
-	public function set($key, $value = NULL)
-	{
-		if (is_array($key))
-		{
-			foreach ($key as $name => $value)
-			{
-				$this->_data[$name] = $value;
-			}
-		}
-		else
-		{
-			$this->_data[$key] = $value;
-		}
-
-		return $this;
-	}
-
-	/**
-	 * Assigns a value by reference. The benefit of binding is that values can
-	 * be altered without re-setting them. It is also possible to bind variables
-	 * before they have values. Assigned values will be available as a
-	 * variable within the view file:
-	 *
-	 *     // This reference can be accessed as $ref within the view
-	 *     $view->bind('ref', $bar);
-	 *
-	 * @param   string   variable name
-	 * @param   mixed    referenced variable
-	 * @return  $this
-	 */
-	public function bind($key, & $value)
-	{
-		$this->_data[$key] =& $value;
-
-		return $this;
-	}
-
-	public function parse($value = NULL)
+ 
+	public function parser($value = NULL)
 	{
 		$value = is_null($value) ? $this->_file : $value;
 		return $this->_jade->render($value);
@@ -381,7 +185,7 @@ class View_Jade extends \View {
 
 		// Combine local and global data, render the template, and capture the output
 		
-		return self::capture($this->parse($this->_file), $this->_data);
+		return self::capture($this->parser($this->_file), $this->_data);
 	}
   
 }
