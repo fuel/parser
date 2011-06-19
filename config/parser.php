@@ -58,13 +58,18 @@ return array(
 		'environment' => array(
 			'autoescape'       => false,
 			'nested_comments'  => false,
-			'allow_spaces'     => true,
-			'allow_php_tags'   => false,
-			'allow_php_func'   => array(),
+			'allow_spaces'     => false,
 			'cache_dir'        => APPPATH.'cache'.DS.'dwoo'.DS,
 			'compile_dir'      => APPPATH.'cache'.DS.'dwoo'.DS.'compiled'.DS,
 			'cache_time'       => 0,
-		),
+			
+			// Set what parser should do with PHP tags
+			// 1 - Encode tags | 2 - Remove tags | 3 - Allow tags
+			'allow_php_tags'   => 2,
+			
+			// Which PHP functions should be accessible through Parser
+			'allow_php_func'   => array(),
+		),	
 	),
 
 	// MUSTACHE ( https://github.com/bobthecow/mustache.php )
