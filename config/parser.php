@@ -13,6 +13,7 @@ return array(
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
 		'jade'      => 'View_Jade',
 		'haml'      => 'View_Haml',
+		'smarty'    => 'View_Smarty',
 	),
 
 
@@ -94,11 +95,30 @@ return array(
 	),
   
 	// HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
+	// ------------------------------------------------------------------------
 	'View_Haml'   => array(
 		'include'   => APPPATH.'vendor'.DS.'phamlp'.DS.'haml'.DS.'HamlParser.php', 
 		'cache_dir' => APPPATH.'cache'.DS.'haml'.DS,
 	),  
 	
+	// SMARTY ( http://www.smarty.net/documentation )
+	// ------------------------------------------------------------------------
+	'View_Smarty'   => array(
+		'include'       => APPPATH.'vendor'.DS.'Smarty'.DS.'libs'.DS.'Smarty.class.php',
+		'delimiters'    => array('{', '}'),
+		'environment'   => array(
+			'compile_dir'       => APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS,
+			'config_dir'        => APPPATH.'tmp'.DS.'Smarty'.DS.'configs'.DS,
+			'cache_dir'         => APPPATH.'cache'.DS.'Smarty'.DS,
+			'caching'           => false,
+			'cache_lifetime'    => 0,
+			'force_compile'     => false,
+			'compile_check'     => true,
+			'debugging'         => false,
+			'autoload_filters'  => array(),
+			'default_modifiers' => array(),
+		),
+	),
 );
 
 // end of file parser.php
