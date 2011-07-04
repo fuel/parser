@@ -35,7 +35,7 @@ class View_Smarty extends \View {
 		}
 	}
 
-	public $extension = 'tpl';
+	public $extension = 'smarty';
 
 	public function parser()
 	{
