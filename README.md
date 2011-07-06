@@ -21,6 +21,15 @@ View::factory('example.mustache');
 // load a Twig template, will load and parse app/views/example.twig
 View::factory('example.twig');
 
+// load a Jade template, will load and parse app/views/example.jade
+View::factory('example.jade');
+
+// load a Haml template, will load and parse app/views/example.haml
+View::factory('example.haml');
+
+// load a Smarty template, will load and parse app/views/example.smarty
+View::factory('example.smarty');
+
 // load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
 View::factory('example.dwoo');
 ```
