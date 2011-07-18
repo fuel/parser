@@ -116,7 +116,7 @@ return array(
 	// HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
 	// ------------------------------------------------------------------------
 	'View_Haml'   => array(
-		'include'   => APPPATH.'vendor'.DS.'phamlp'.DS.'haml'.DS.'HamlParser.php',
+		'include'   => APPPATH.'vendor'.DS.'Phamlp'.DS.'haml'.DS.'HamlParser.php',
 		'cache_dir' => APPPATH.'cache'.DS.'haml'.DS,
 	),
 
