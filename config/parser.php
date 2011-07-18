@@ -1,4 +1,23 @@
 <?php
+/**
+ * Fuel is a fast, lightweight, community driven PHP5 framework.
+ *
+ * @package    Fuel
+ * @version    1.0
+ * @author     Fuel Development Team
+ * @license    MIT License
+ * @copyright  2010 - 2011 Fuel Development Team
+ * @link       http://fuelphp.com
+ */
+
+/**
+ * NOTICE:
+ *
+ * If you need to make modifications to the default configuration, copy
+ * this file to your app/config folder, and make them in there.
+ *
+ * This will allow you to upgrade fuel without losing your custom config.
+ */
 
 return array(
 
@@ -65,14 +84,14 @@ return array(
 			'cache_dir'        => APPPATH.'cache'.DS.'dwoo'.DS,
 			'compile_dir'      => APPPATH.'cache'.DS.'dwoo'.DS.'compiled'.DS,
 			'cache_time'       => 0,
-			
+
 			// Set what parser should do with PHP tags
 			// 1 - Encode tags | 2 - Remove tags | 3 - Allow tags
 			'allow_php_tags'   => 2,
-			
+
 			// Which PHP functions should be accessible through Parser
 			'allow_php_func'   => array(),
-		),	
+		),
 	),
 
 	// MUSTACHE ( https://github.com/bobthecow/mustache.php )
@@ -87,20 +106,20 @@ return array(
 	),
 
 	// JADE PHP ( https://github.com/everzet/jade.php )
-	// See notes in /parser/classes/view/jade.php 
+	// See notes in /parser/classes/view/jade.php
 	// ------------------------------------------------------------------------
 	'View_Jade' => array(
 		'include' => APPPATH.'vendor'.DS.'Jade'.DS.'autoload.php.dist',
 		'cache_dir' => APPPATH.'cache'.DS.'jade'.DS,
 	),
-  
+
 	// HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
 	// ------------------------------------------------------------------------
 	'View_Haml'   => array(
-		'include'   => APPPATH.'vendor'.DS.'phamlp'.DS.'haml'.DS.'HamlParser.php', 
+		'include'   => APPPATH.'vendor'.DS.'phamlp'.DS.'haml'.DS.'HamlParser.php',
 		'cache_dir' => APPPATH.'cache'.DS.'haml'.DS,
-	),  
-	
+	),
+
 	// SMARTY ( http://www.smarty.net/documentation )
 	// ------------------------------------------------------------------------
 	'View_Smarty'   => array(
