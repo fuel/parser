@@ -51,7 +51,7 @@ class View_Twig extends \View {
 
 	public $extension = 'twig';
 
-	public function parser()
+	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
 		{

@@ -32,7 +32,7 @@ class View_Haml extends \View {
 
 	public $extension = 'haml';
 
-	public function parser()
+	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
 		{
