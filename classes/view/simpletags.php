@@ -39,7 +39,7 @@ class View_SimpleTags extends \View {
 
 	public $extension = 'stags';
 
-	public function parser()
+	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
 		{

@@ -37,7 +37,7 @@ class View_Smarty extends \View {
 
 	public $extension = 'smarty';
 
-	public function parser()
+	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
 		{
