@@ -39,7 +39,7 @@ class View_Dwoo extends \View {
 
 	public $extension = 'tpl';
 
-	public function parser()
+	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
 		{
