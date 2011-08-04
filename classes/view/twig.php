@@ -55,6 +55,7 @@ class View_Twig extends \View {
 	{
 		if ( ! empty(static::$_parser))
 		{
+			static::$_parser->setLoader(static::$_parser_loader);
 			return static::$_parser;
 		}
 
