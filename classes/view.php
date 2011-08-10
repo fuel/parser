@@ -21,7 +21,7 @@ class View extends \Fuel\Core\View {
 		\Config::load('parser', true);
 	}
 
-	public static function factory($file = null, array $data = null, $auto_encode = null)
+	public static function factory($file = null, $data = null, $auto_encode = null)
 	{
 		$extension  = pathinfo($file, PATHINFO_EXTENSION);
 		$class      = \Config::get('parser.extensions.'.$extension, get_called_class());
