@@ -46,6 +46,7 @@ class View_Smarty extends \View {
 
 		// Parser
 		static::$_parser = new \Smarty();
+		static::$_parser->template_dir      = \Config::get('parser.View_Smarty.environment.template_dir', APPPATH.'views'.DS);
 		static::$_parser->compile_dir       = \Config::get('parser.View_Smarty.environment.compile_dir', APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS);
 		static::$_parser->config_dir        = \Config::get('parser.View_Smarty.environment.config_dir', APPPATH.'tmp'.DS.'Smarty'.DS.'configs'.DS);
 		static::$_parser->cache_dir         = \Config::get('parser.View_Smarty.environment.cache_dir', APPPATH.'cache'.DS.'Smarty'.DS);
