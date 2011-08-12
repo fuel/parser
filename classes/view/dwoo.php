@@ -16,9 +16,24 @@ namespace Parser;
 
 class View_Dwoo extends \View {
 
+	protected static $_class;
 	protected static $_parser;
 	protected static $_parser_compiler;
 	protected static $_parser_security;
+
+	public static function _init()
+	{
+		parent::_init();
+
+		// Get class name
+		static::$_class = \Inflector::denamespace(__CLASS__);
+
+		// Include necessary files
+		foreach ((array) \Config::get('parser.'.static::$_class.'.include', array()) as $include)
+		{
+			require_once $include;
+		}
+	}
 
 	protected static function capture($view_filename, array $view_data)
 	{

@@ -16,11 +16,23 @@ namespace Parser;
 
 class View_Twig extends \View {
 
+	protected static $_class;
 	protected static $_parser;
 	protected static $_parser_loader;
 
 	public static function _init()
 	{
+		parent::_init();
+
+		// Get class name
+		static::$_class = \Inflector::denamespace(__CLASS__);
+
+		// Include necessary files
+		foreach ((array) \Config::get('parser.'.static::$_class.'.include', array()) as $include)
+		{
+			require_once $include;
+		}
+
 		\Twig_Autoloader::register();
 	}
 
