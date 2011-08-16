@@ -20,6 +20,18 @@ class View extends \Fuel\Core\View {
 	{
 		\Config::load('parser', true);
 		parent::_init();
+
+		// Get class name
+		$class = \Inflector::denamespace(get_called_class());
+
+		if ($class !== __CLASS__)
+		{
+			// Include necessary files
+			foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
+			{
+				require_once $include;
+			}
+		}
 	}
 
 	public static function factory($file = null, $data = null, $auto_encode = null)

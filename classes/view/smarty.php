@@ -16,22 +16,7 @@ namespace Parser;
 
 class View_Smarty extends \View {
 
-	protected static $_class;
 	protected static $_parser;
-
-	public static function _init()
-	{
-		parent::_init();
-
-		// Get class name
-		static::$_class = \Inflector::denamespace(__CLASS__);
-
-		// Include necessary files
-		foreach ((array) \Config::get('parser.'.static::$_class.'.include', array()) as $include)
-		{
-			require_once $include;
-		}
-	}
 
 	protected static function capture($view_filename, array $view_data)
 	{
