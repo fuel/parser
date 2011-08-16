@@ -19,6 +19,7 @@ class View extends \Fuel\Core\View {
 	public static function _init()
 	{
 		\Config::load('parser', true);
+		parent::_init();
 	}
 
 	public static function factory($file = null, $data = null, $auto_encode = null)
