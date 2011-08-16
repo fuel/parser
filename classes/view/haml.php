@@ -19,15 +19,14 @@ use HamlParser;
 class View_Haml extends \View {
 
 	protected static $_parser;
-  protected static $_cache;
+	protected static $_cache;
 
 	protected static function capture($view_filename, array $view_data)
 	{
-	
-    static::cache_init($view_filename);
-    $file = static::parser()->parse($view_filename, static::$_cache);
-		return parent::capture($file, $view_data);
+		static::cache_init($view_filename);
+		$file = static::parser()->parse($view_filename, static::$_cache);
 
+		return parent::capture($file, $view_data);
 	}
 
 	public $extension = 'haml';
@@ -43,7 +42,7 @@ class View_Haml extends \View {
 
 		return static::$_parser;
 	}
-  
+
 	// Jade stores cached templates as the filename in plain text,
 	// so there is a high chance of name collisions (ex: index.jade).
 	// This function attempts to create a unique directory for each
@@ -51,7 +50,6 @@ class View_Haml extends \View {
 	// TODO: Extend Jade's caching class?
 	public function cache_init($file_path)
 	{
-  
 		$cache_key = md5($file_path);
 		$cache_path = \Config::get('parser.View_Haml.cache_dir', null)
 			.substr($cache_key, 0, 2).DS.substr($cache_key, 2, 2);
@@ -62,8 +60,8 @@ class View_Haml extends \View {
 		}
 
 		static::$_cache = $cache_path;
-	}  
-  
+	}
+
 }
 
 /* end of file haml.php */
