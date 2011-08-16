@@ -21,6 +21,7 @@ class View_Twig extends \View {
 
 	public static function _init()
 	{
+		parent::_init();
 		\Twig_Autoloader::register();
 	}
 
