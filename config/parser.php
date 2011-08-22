@@ -76,8 +76,8 @@ return array(
 		 * Define any Twig extensions you wish to load here.
 		 */
 		'extensions' => array(
-			'\Twig_Extensions_Extension_Text',
-			'\Twig_Extensions_Extension_Debug',
+			//'\Twig_Extensions_Extension_Text',
+			//'\Twig_Extensions_Extension_Debug',
 			//'\Twig_Extensions_Extension_I18n',
 		),
 	),
