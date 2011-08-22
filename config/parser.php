@@ -70,8 +70,9 @@ return array(
 			'autoescape'           => false,
 			'optimizations'        => -1,
 		),
+
 		/**
-		 * Twig Extensions
+		 * Twig Extensions ( https://github.com/fabpot/Twig-extensions )
 		 *
 		 * Define any Twig extensions you wish to load here.
 		 */
