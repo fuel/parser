@@ -78,8 +78,6 @@ return array(
 		 */
 		'extensions' => array(
 			//'\Twig_Extensions_Extension_Text',
-			//'\Twig_Extensions_Extension_Debug',
-			//'\Twig_Extensions_Extension_I18n',
 		),
 	),
 
