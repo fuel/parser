@@ -72,6 +72,13 @@ class View_Twig extends \View {
 			static::$_parser->setLexer($twig_lexer);
 		}
 
+		// Twig Extensions
+		$twig_extensions = \Config::get('parser.View_Twig.extensions', array());
+		foreach ($twig_extensions as $extension)
+		{
+			static::$_parser->addExtension(new $extension());
+		}
+
 		return static::$_parser;
 	}
 }
