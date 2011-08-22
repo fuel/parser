@@ -70,6 +70,15 @@ return array(
 			'autoescape'           => false,
 			'optimizations'        => -1,
 		),
+
+		/**
+		 * Twig Extensions ( https://github.com/fabpot/Twig-extensions )
+		 *
+		 * Define any Twig extensions you wish to load here.
+		 */
+		'extensions' => array(
+			//'\Twig_Extensions_Extension_Text',
+		),
 	),
 
 	// DWOO ( http://wiki.dwoo.org/ )
