@@ -16,6 +16,11 @@ namespace Parser;
 
 class View extends \Fuel\Core\View {
 
+	/**
+	 * @var  array  Holds the list of loaded files.
+	 */
+	protected static $loaded_files = array();
+
 	public static function _init()
 	{
 		\Config::load('parser', true);
@@ -29,7 +34,11 @@ class View extends \Fuel\Core\View {
 			// Include necessary files
 			foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
 			{
-				require_once $include;
+				if ( ! array_key_exists($include, static::$loaded_files))
+				{
+					require $include;
+					static::$loaded_files[$include] = true;
+				}
 			}
 		}
 	}
@@ -61,7 +70,11 @@ class View extends \Fuel\Core\View {
 		// Include necessary files
 		foreach ((array) \Config::get('parser.'.$class.'.include', array()) as $include)
 		{
-			require_once $include;
+			if ( ! array_key_exists($include, static::$loaded_files))
+			{
+				require $include;
+				static::$loaded_files[$include] = true;
+			}
 		}
 
 		$view = new $class($file, $data, $auto_encode);
