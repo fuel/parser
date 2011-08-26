@@ -28,6 +28,7 @@ return array(
 		'php'       => 'View',
 		'twig'      => 'View_Twig',
 		'mustache'  => 'View_Mustache',
+		'md'        => 'View_Markdown',
 		'stags'     => 'View_SimpleTags',
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
 		'jade'      => 'View_Jade',
@@ -49,6 +50,12 @@ return array(
 		'trigger' => 'tag:',
 	),
 
+	// MARKDOWN ( http://michelf.com/projects/php-markdown/ )
+	// ------------------------------------------------------------------------
+	'View_Markdown' => array(
+		'include'   => PKGPATH.'parser'.DS.'vendor'.DS.'markdown'.DS.'markdown.php',
+		'allow_php' => true,
+	),
 
 	// TWIG ( http://www.twig-project.org/documentation )
 	// ------------------------------------------------------------------------

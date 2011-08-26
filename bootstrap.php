@@ -18,6 +18,7 @@ Autoloader::add_classes(array(
 	'Parser\\View'             => __DIR__.'/classes/view.php',
 	'Parser\\View_Dwoo'        => __DIR__.'/classes/view/dwoo.php',
 	'Parser\\View_Mustache'    => __DIR__.'/classes/view/mustache.php',
+	'Parser\\View_Markdown'    => __DIR__.'/classes/view/markdown.php',
 	'Parser\\View_SimpleTags'  => __DIR__.'/classes/view/simpletags.php',
 	'Parser\\View_Twig'        => __DIR__.'/classes/view/twig.php',
 	'Parser\\View_Jade'        => __DIR__.'/classes/view/jade.php',
