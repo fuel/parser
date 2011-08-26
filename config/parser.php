@@ -97,7 +97,7 @@ return array(
 	// MUSTACHE ( https://github.com/bobthecow/mustache.php )
 	// ------------------------------------------------------------------------
 	'View_Mustache' => array(
-		'include' => APPPATH.'vendor'.DS.'Mustache'.DS.'Mustache.php',
+		'include' => PKGPATH.'parser'.DS.'vendor'.DS.'Mustache'.DS.'Mustache.php',
 		'delimiters' => array('{{', '}}'),
 		'environment' => array(
 			'charset' => 'UTF-8',

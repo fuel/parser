@@ -2,9 +2,12 @@
 
 ## Installing
 
-Currently only available as download or clone from Github. Like any other package it must be put in its own 'parser' dir in the packages dir and added to your app/config/config.php as an always loaded package.
+Simply add `parser` to your config.php `always_loaded.packages` config option.
 
-*Important:* this package needs a recent version of Fuel at least RC3, RC2.1 and lower do not yet support this package.
+## Included Parsers
+
+* Mustache - A lightweight, yet powerful templating library.
+* SimpleTags - A library released by Dan Horrigan for basic template tag usage.
 
 ## Usage
 
@@ -36,7 +39,7 @@ View::forge('example.dwoo');
 
 ## Installing parsers
 
-Only SimpleTags is included. While many other drivers are included, their libraries are not and are by default expected in `app/vendor/lib_name` (capitalize lib_name), you'll have to download them yourself. Don't change the casing or anything, keep it as much original as possible within the `vendor/lib_name` dir to keep updating easy (also because some come with their own autoloader).
+Only SimpleTags and Mustache are included. While many other drivers are included, their libraries are not and are by default expected in `app/vendor/lib_name` (capitalize lib_name), you'll have to download them yourself. Don't change the casing or anything, keep it as much original as possible within the `vendor/lib_name` dir to keep updating easy (also because some come with their own autoloader).
 
 You can configure them to be loaded from other locations by copying the parser.php config file to your app and editing it.
 
