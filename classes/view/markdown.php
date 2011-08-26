@@ -20,8 +20,6 @@ class View_Markdown extends \View {
 
 	protected static function capture($view_filename, array $view_data = array())
 	{
-		$data = static::$_global_data;
-		$data = array_merge($data, $view_data);
 		$contents = '';
 
 		if (\Config::get('parser.View_Markdown.allow_php', false))
