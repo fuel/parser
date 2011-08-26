@@ -10,28 +10,28 @@ Currently only available as download or clone from Github. Like any other packag
 
 ```php
 // old usage still valid, will load app/views/example.php
-View::factory('example');
+View::forge('example');
 
 // load a SimpleTags template, will load and parse app/views/example.stags
-View::factory('example.stags');
+View::forge('example.stags');
 
 // load a Mustache template, will load and parse app/views/example.mustache
-View::factory('example.mustache');
+View::forge('example.mustache');
 
 // load a Twig template, will load and parse app/views/example.twig
-View::factory('example.twig');
+View::forge('example.twig');
 
 // load a Jade template, will load and parse app/views/example.jade
-View::factory('example.jade');
+View::forge('example.jade');
 
 // load a Haml template, will load and parse app/views/example.haml
-View::factory('example.haml');
+View::forge('example.haml');
 
 // load a Smarty template, will load and parse app/views/example.smarty
-View::factory('example.smarty');
+View::forge('example.smarty');
 
 // load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
-View::factory('example.dwoo');
+View::forge('example.dwoo');
 ```
 
 ## Installing parsers
@@ -45,6 +45,6 @@ You can configure them to be loaded from other locations by copying the parser.p
 Currently the drivers still lack a lot of config options they should probably accept. They are currently all configured to work with one instance of their parser library, which is available to config:
 
 ```php
-$view = View::factory('example.stags');
+$view = View::forge('example.stags');
 $view->parser()->set_delimiters('{', '}');
 ```
