@@ -18,17 +18,19 @@ class View_Markdown extends \View {
 
 	protected static $_parser;
 
-	protected static function capture($view_filename, array $view_data = array())
+	protected function process_file($file_override = false)
 	{
+		$file = $file_override ?: $this->file_name;
+
 		$contents = '';
 
 		if (\Config::get('parser.View_Markdown.allow_php', false))
 		{
-			$contents = static::pre_process('php', $view_filename, $view_data);
+			$contents = static::pre_process('php', $file, $this->get_data());
 		}
 		else
 		{
-			$contents = file_get_contents($view_filename);
+			$contents = file_get_contents($file);
 		}
 		
 		return static::parser()->transform($contents);

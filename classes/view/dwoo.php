@@ -20,14 +20,14 @@ class View_Dwoo extends \View {
 	protected static $_parser_compiler;
 	protected static $_parser_security;
 
-	protected static function capture($view_filename, array $view_data)
+	protected function process_file($file_override = false)
 	{
-		$data = static::$_global_data;
-		$data = array_merge($data, $view_data);
+		$file = $file_override ?: $this->file_name;
+		$data = $this->get_data();
 
 		try
 		{
-			return static::parser()->get($view_filename, $data);
+			return static::parser()->get($file, $data);
 		}
 		catch (\Exception $e)
 		{

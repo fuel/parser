@@ -18,14 +18,14 @@ class View_Smarty extends \View {
 
 	protected static $_parser;
 
-	protected static function capture($view_filename, array $view_data)
+	protected function process_file($file_override = false)
 	{
-		$data = static::$_global_data;
-		$data = array_merge($data, $view_data);
+		$file = $file_override ?: $this->file_name;
+		$data = $his->get_data();
 
 		try
 		{
-			return static::parser()->fetch($view_filename, $data);
+			return static::parser()->fetch($file, $data);
 		}
 		catch (\Exception $e)
 		{

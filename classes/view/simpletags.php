@@ -18,15 +18,15 @@ class View_SimpleTags extends \View {
 
 	protected static $_parser;
 
-	protected static function capture($view_filename, array $view_data)
+	protected function process_file($file_override = false)
 	{
-		$data = static::$_global_data;
-		$data = array_merge($data, $view_data);
+		$file = $file_override ?: $this->file_name;
+		$data = $this->get_data();
 
 		try
 		{
 			// Load the view within the current scope
-			$output = static::parser()->parse(file_get_contents($view_filename), $data);
+			$output = static::parser()->parse(file_get_contents($file), $data);
 			return $output['content'];
 		}
 		catch (\Exception $e)

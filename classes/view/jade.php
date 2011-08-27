@@ -21,12 +21,13 @@ class View_Jade extends \View {
 	protected static $_jade;
 	protected static $_cache;
 
-	protected static function capture($view_filename, array $view_data)
+	protected function process_file($file_override = false)
 	{
-		static::cache_init($view_filename);
+		$file = $file_override ?: $this->file_name;
+		static::cache_init($file);
 
-		$file = static::parser()->cache($view_filename);
-		return parent::capture($file, $view_data);
+		$file = static::parser()->cache($file);
+		return parent::process_file($file);
 	}
 
 	public $extension = 'jade';

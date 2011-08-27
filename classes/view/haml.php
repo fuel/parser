@@ -21,12 +21,14 @@ class View_Haml extends \View {
 	protected static $_parser;
 	protected static $_cache;
 
-	protected static function capture($view_filename, array $view_data)
+	protected function process_file($file_override = false)
 	{
-		static::cache_init($view_filename);
-		$file = static::parser()->parse($view_filename, static::$_cache);
+		$file = $file_override ?: $this->file_name;
 
-		return parent::capture($file, $view_data);
+		static::cache_init($file);
+		$file = static::parser()->parse($file, static::$_cache);
+
+		return parent::process_file($file);
 	}
 
 	public $extension = 'haml';
