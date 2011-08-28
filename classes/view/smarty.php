@@ -21,7 +21,7 @@ class View_Smarty extends \View {
 	protected function process_file($file_override = false)
 	{
 		$file = $file_override ?: $this->file_name;
-		$data = $his->get_data();
+		$data = $this->get_data();
 
 		try
 		{
