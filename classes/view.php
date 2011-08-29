@@ -24,7 +24,6 @@ class View extends \Fuel\Core\View {
 	public static function _init()
 	{
 		\Config::load('parser', true);
-		parent::_init();
 
 		// Get class name
 		$class = \Inflector::denamespace(get_called_class());
