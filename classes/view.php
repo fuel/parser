@@ -76,10 +76,14 @@ class View extends \Fuel\Core\View {
 			}
 		}
 
-		$view = new $class($file, $data, $auto_encode);
+		// Instantiate the Parser class without auto-loading the view file
+		$view = new $class(null, $data, $auto_encode);
 
 		// Set extension when given
 		$extension and $view->extension = $extension;
+
+		// Load the view file
+		$view->set_filename($file);
 
 		return $view;
 	}
