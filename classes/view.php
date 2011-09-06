@@ -62,7 +62,7 @@ class View extends \Fuel\Core\View {
 		// Class can be an array config
 		if (is_array($class))
 		{
-			$class['extension'] and $extension = $class['extension'];
+			$class['extension'] and $extension = preg_replace('/\./', '', $class['extension'], 1);
 			$class = $class['class'];
 		}
 
