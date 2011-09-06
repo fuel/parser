@@ -30,7 +30,7 @@ return array(
 		'mustache'  => 'View_Mustache',
 		'md'        => 'View_Markdown',
 		'stags'     => 'View_SimpleTags',
-		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => '.tpl'),
+		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
 		'jade'      => 'View_Jade',
 		'haml'      => 'View_Haml',
 		'smarty'    => 'View_Smarty',
