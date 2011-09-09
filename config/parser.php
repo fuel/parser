@@ -29,7 +29,6 @@ return array(
 		'twig'      => 'View_Twig',
 		'mustache'  => 'View_Mustache',
 		'md'        => 'View_Markdown',
-		'stags'     => 'View_SimpleTags',
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
 		'jade'      => 'View_Jade',
 		'haml'      => 'View_Haml',
@@ -41,14 +40,6 @@ return array(
 	// Individual class config by classname
 	// ------------------------------------------------------------------------
 
-
-	// SIMPLETAGS ( https://bitbucket.org/dhorrigan/simpletags/overview )
-	// ------------------------------------------------------------------------
-	'View_SimpleTags' => array(
-		'include' => PKGPATH.'parser'.DS.'vendor'.DS.'simpletags.php',
-		'delimiters' => array('{', '}'),
-		'trigger' => 'tag:',
-	),
 
 	// MARKDOWN ( http://michelf.com/projects/php-markdown/ )
 	// ------------------------------------------------------------------------
