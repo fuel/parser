@@ -28,6 +28,9 @@ class View_Twig extends \View
 
 	protected function process_file($file_override = false)
 	{
+		// Twig does it's own filtering, so don't let the View class do it.
+		$this->auto_filter = false;
+
 		$file = $file_override ?: $this->file_name;
 		$data = $this->get_data();
 
