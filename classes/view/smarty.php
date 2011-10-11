@@ -22,11 +22,13 @@ class View_Smarty extends \View
 	protected function process_file($file_override = false)
 	{
 		$file = $file_override ?: $this->file_name;
-		$data = $this->get_data();
 
 		try
 		{
-			return static::parser()->fetch($file, $data);
+			// Smarty doesn't support method chaining
+			$parser = static::parser();
+			$parser->assign($this->get_data());
+			return $parser->fetch($file);
 		}
 		catch (\Exception $e)
 		{
