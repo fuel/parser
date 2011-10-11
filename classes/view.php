@@ -14,7 +14,8 @@
 
 namespace Parser;
 
-class View extends \Fuel\Core\View {
+class View extends \Fuel\Core\View
+{
 
 	/**
 	 * @var  array  Holds the list of loaded files.

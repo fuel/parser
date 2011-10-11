@@ -14,7 +14,8 @@
 
 namespace Parser;
 
-class View_Mustache extends \View {
+class View_Mustache extends \View
+{
 
 	protected static $_parser;
 

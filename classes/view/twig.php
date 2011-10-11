@@ -14,7 +14,8 @@
 
 namespace Parser;
 
-class View_Twig extends \View {
+class View_Twig extends \View
+{
 
 	protected static $_parser;
 	protected static $_parser_loader;
