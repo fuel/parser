@@ -42,13 +42,7 @@ class View_Markdown extends \View
 		if ($_type == 'php')
 		{
 			// Import the view variables to local namespace
-			$_data AND extract($_data, EXTR_SKIP);
-
-			if (static::$_global_data)
-			{
-				// Import the global view variables to local namespace and maintain references
-				extract(static::$_global_data, EXTR_REFS);
-			}
+			$_data AND extract($_data, EXTR_REFS);
 
 			// Capture the view output
 			ob_start();
