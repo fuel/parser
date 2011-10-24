@@ -68,6 +68,7 @@ return array(
 			'autoescape'           => false,
 			'optimizations'        => -1,
 		),
+		'extensions' => array(),
 	),
 
 	// DWOO ( http://wiki.dwoo.org/ )

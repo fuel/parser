@@ -68,6 +68,11 @@ class View_Twig extends \View
 		$twig_env_conf = \Config::get('parser.View_Twig.environment', array('optimizer' => -1));
 		static::$_parser = new \Twig_Environment(static::$_parser_loader, $twig_env_conf);
 
+		foreach (\Config::get('parser.View_Twig.extensions') as $ext)
+		{
+			static::$_parser->addExtension(new $ext());
+		}
+
 		// Twig Lexer
 		$twig_lexer_conf = \Config::get('parser.View_Twig.delimiters', null);
 		if (isset($twig_lexer_conf))
