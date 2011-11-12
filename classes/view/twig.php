@@ -19,8 +19,8 @@ use Twig_Environment;
 use Twig_Loader_Filesystem;
 use Twig_Lexer;
 
-class View_Twig extends \View {
-
+class View_Twig extends \View
+{
 	protected static $_parser;
 	protected static $_parser_loader;
 
@@ -32,6 +32,9 @@ class View_Twig extends \View {
 
 	protected function process_file($file_override = false)
 	{
+		// Twig does it's own filtering, so don't let the View class do it.
+		$this->auto_filter = false;
+
 		$file = $file_override ?: $this->file_name;
 		$data = $this->get_data();
 
@@ -73,6 +76,11 @@ class View_Twig extends \View {
 		// Twig Environment
 		$twig_env_conf = \Config::get('parser.View_Twig.environment', array('optimizer' => -1));
 		static::$_parser = new Twig_Environment(static::$_parser_loader, $twig_env_conf);
+
+		foreach (\Config::get('parser.View_Twig.extensions') as $ext)
+		{
+			static::$_parser->addExtension(new $ext());
+		}
 
 		// Twig Lexer
 		$twig_lexer_conf = \Config::get('parser.View_Twig.delimiters', null);

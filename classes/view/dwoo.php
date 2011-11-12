@@ -18,8 +18,8 @@ use Dwoo;
 use Dwoo_Compiler;
 use Dwoo_Security_Policy;
 
-class View_Dwoo extends \View {
-
+class View_Dwoo extends \View
+{
 	protected static $_parser;
 	protected static $_parser_compiler;
 	protected static $_parser_security;
