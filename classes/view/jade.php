@@ -32,6 +32,11 @@ class View_Jade extends \View {
 
 	public $extension = 'jade';
 
+	/**
+	 * Returns the Parser lib object
+	 *
+	 * @return  Jade\Parser
+	 */
 	public static function parser()
 	{
 		if ( ! empty(static::$_parser))

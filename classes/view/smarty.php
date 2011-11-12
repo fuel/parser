@@ -14,6 +14,8 @@
 
 namespace Parser;
 
+use Smarty;
+
 class View_Smarty extends \View {
 
 	protected static $_parser;
@@ -37,6 +39,11 @@ class View_Smarty extends \View {
 
 	public $extension = 'smarty';
 
+	/**
+	 * Returns the Parser lib object
+	 *
+	 * @return  Smarty
+	 */
 	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
@@ -45,7 +52,7 @@ class View_Smarty extends \View {
 		}
 
 		// Parser
-		static::$_parser = new \Smarty();
+		static::$_parser = new Smarty();
 		static::$_parser->template_dir      = \Config::get('parser.View_Smarty.environment.template_dir', APPPATH.'views'.DS);
 		static::$_parser->compile_dir       = \Config::get('parser.View_Smarty.environment.compile_dir', APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS);
 		static::$_parser->config_dir        = \Config::get('parser.View_Smarty.environment.config_dir', APPPATH.'tmp'.DS.'Smarty'.DS.'configs'.DS);

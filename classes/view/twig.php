@@ -14,6 +14,11 @@
 
 namespace Parser;
 
+use Twig_Autoloader;
+use Twig_Environment;
+use Twig_Loader_Filesystem;
+use Twig_Lexer;
+
 class View_Twig extends \View {
 
 	protected static $_parser;
@@ -22,7 +27,7 @@ class View_Twig extends \View {
 	public static function _init()
 	{
 		parent::_init();
-		\Twig_Autoloader::register();
+		Twig_Autoloader::register();
 	}
 
 	protected function process_file($file_override = false)
@@ -36,7 +41,7 @@ class View_Twig extends \View {
 		// Twig Loader
 		$views_paths = \Config::get('parser.View_Twig.views_paths', array(APPPATH . 'views'));
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
-		static::$_parser_loader = new \Twig_Loader_Filesystem($views_paths);
+		static::$_parser_loader = new Twig_Loader_Filesystem($views_paths);
 
 		try
 		{
@@ -52,6 +57,11 @@ class View_Twig extends \View {
 
 	public $extension = 'twig';
 
+	/**
+	 * Returns the Parser lib object
+	 *
+	 * @return  Twig_Environment
+	 */
 	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
@@ -62,13 +72,13 @@ class View_Twig extends \View {
 
 		// Twig Environment
 		$twig_env_conf = \Config::get('parser.View_Twig.environment', array('optimizer' => -1));
-		static::$_parser = new \Twig_Environment(static::$_parser_loader, $twig_env_conf);
+		static::$_parser = new Twig_Environment(static::$_parser_loader, $twig_env_conf);
 
 		// Twig Lexer
 		$twig_lexer_conf = \Config::get('parser.View_Twig.delimiters', null);
 		if (isset($twig_lexer_conf))
 		{
-			$twig_lexer = new \Twig_Lexer(static::$_parser, $twig_lexer_conf);
+			$twig_lexer = new Twig_Lexer(static::$_parser, $twig_lexer_conf);
 			static::$_parser->setLexer($twig_lexer);
 		}
 

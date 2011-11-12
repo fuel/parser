@@ -33,6 +33,11 @@ class View_Haml extends \View {
 
 	public $extension = 'haml';
 
+	/**
+	 * Returns the Parser lib object
+	 *
+	 * @return  HamlParser
+	 */
 	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
