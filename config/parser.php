@@ -68,7 +68,9 @@ return array(
 			'autoescape'           => false,
 			'optimizations'        => -1,
 		),
-		'extensions' => array(),
+		'extensions' => array(
+			'Twig_Fuel_Extension'
+		),
 	),
 
 	// DWOO ( http://wiki.dwoo.org/ )
