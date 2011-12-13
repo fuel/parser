@@ -14,9 +14,10 @@
 
 namespace Parser;
 
+use Mustache;
+
 class View_Mustache extends \View
 {
-
 	protected static $_parser;
 
 	protected function process_file($file_override = false)
@@ -38,6 +39,11 @@ class View_Mustache extends \View
 
 	public $extension = 'mustache';
 
+	/**
+	 * Returns the Parser lib object
+	 *
+	 * @return  Mustache
+	 */
 	public static function parser()
 	{
 		if ( ! empty(static::$_parser))
@@ -51,7 +57,7 @@ class View_Mustache extends \View
 			'pragmas'     => \Config::get('parser.View_Mustache.environment.pragmas', array()),
 		);
 
-		static::$_parser = new \Mustache(null, null, null, $options);
+		static::$_parser = new Mustache(null, null, null, $options);
 
 		return static::$_parser;
 	}

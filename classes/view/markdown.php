@@ -33,10 +33,10 @@ class View_Markdown extends \View
 		{
 			$contents = file_get_contents($file);
 		}
-		
+
 		return static::parser()->transform($contents);
 	}
-	
+
 	protected static function pre_process($_type = 'php', $_view_filename, array $_data = array())
 	{
 		if ($_type == 'php')
@@ -68,6 +68,11 @@ class View_Markdown extends \View
 
 	public $extension = 'md';
 
+	/**
+	 * Returns the Parser lib object
+	 *
+	 * @return  Markdown_Parser
+	 */
 	public static function parser()
 	{
 		static $parser = null;

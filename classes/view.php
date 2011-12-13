@@ -83,6 +83,11 @@ class View extends \Fuel\Core\View
 		}
 
 		// Instantiate the Parser class without auto-loading the view file
+		if ($auto_encode === null)
+		{
+			$auto_encode = \Config::get('parser.'.$class.'.auto_encode', null);
+		}
+
 		$view = new $class(null, $data, $auto_encode);
 
 		// Set extension when given

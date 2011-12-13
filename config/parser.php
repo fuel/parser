@@ -44,14 +44,16 @@ return array(
 	// MARKDOWN ( http://michelf.com/projects/php-markdown/ )
 	// ------------------------------------------------------------------------
 	'View_Markdown' => array(
-		'include'   => PKGPATH.'parser'.DS.'vendor'.DS.'markdown'.DS.'markdown.php',
-		'allow_php' => true,
+		'include'      => PKGPATH.'parser'.DS.'vendor'.DS.'markdown'.DS.'markdown.php',
+		'auto_encode'  => true,
+		'allow_php'    => true,
 	),
 
 	// TWIG ( http://www.twig-project.org/documentation )
 	// ------------------------------------------------------------------------
 	'View_Twig' => array(
 		'include' => APPPATH.'vendor'.DS.'Twig'.DS.'Autoloader.php',
+		'auto_encode' => true,
 		'views_paths' => array(APPPATH.'views'),
 		'delimiters' => array(
 			'tag_block'     => array('{%', '%}'),
@@ -68,13 +70,16 @@ return array(
 			'autoescape'           => false,
 			'optimizations'        => -1,
 		),
-		'extensions' => array(),
+		'extensions' => array(
+			'Twig_Fuel_Extension'
+		),
 	),
 
 	// DWOO ( http://wiki.dwoo.org/ )
 	// ------------------------------------------------------------------------
 	'View_Dwoo' => array(
 		'include' => APPPATH.'vendor'.DS.'Dwoo'.DS.'dwooAutoload.php',
+		'auto_encode' => true,
 		'delimiters' => array('{{', '}}'),
 		'environment' => array(
 			'autoescape'       => false,
@@ -97,6 +102,7 @@ return array(
 	// ------------------------------------------------------------------------
 	'View_Mustache' => array(
 		'include' => PKGPATH.'parser'.DS.'vendor'.DS.'Mustache'.DS.'Mustache.php',
+		'auto_encode' => true,
 		'delimiters' => array('{{', '}}'),
 		'environment' => array(
 			'charset' => 'UTF-8',
@@ -108,21 +114,24 @@ return array(
 	// See notes in /parser/classes/view/jade.php
 	// ------------------------------------------------------------------------
 	'View_Jade' => array(
-		'include' => APPPATH.'vendor'.DS.'Jade'.DS.'autoload.php.dist',
-		'cache_dir' => APPPATH.'cache'.DS.'jade'.DS,
+		'include'      => APPPATH.'vendor'.DS.'Jade'.DS.'autoload.php.dist',
+		'auto_encode'  => true,
+		'cache_dir'    => APPPATH.'cache'.DS.'jade'.DS,
 	),
 
 	// HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
 	// ------------------------------------------------------------------------
 	'View_Haml'   => array(
-		'include'   => APPPATH.'vendor'.DS.'Phamlp'.DS.'haml'.DS.'HamlParser.php',
-		'cache_dir' => APPPATH.'cache'.DS.'haml'.DS,
+		'include'      => APPPATH.'vendor'.DS.'Phamlp'.DS.'haml'.DS.'HamlParser.php',
+		'auto_encode'  => true,
+		'cache_dir'    => APPPATH.'cache'.DS.'haml'.DS,
 	),
 
 	// SMARTY ( http://www.smarty.net/documentation )
 	// ------------------------------------------------------------------------
 	'View_Smarty'   => array(
 		'include'       => APPPATH.'vendor'.DS.'Smarty'.DS.'libs'.DS.'Smarty.class.php',
+		'auto_encode' => true,
 		'delimiters'    => array('{', '}'),
 		'environment'   => array(
 			'compile_dir'       => APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS,
