@@ -16,7 +16,7 @@ namespace Parser;
 
 use HamlParser;
 
-class View_Haml extends \View
+class View_Haml extends View
 {
 
 	protected static $_parser;

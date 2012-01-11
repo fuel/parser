@@ -19,7 +19,7 @@ use Twig_Environment;
 use Twig_Loader_Filesystem;
 use Twig_Lexer;
 
-class View_Twig extends \View
+class View_Twig extends View
 {
 	protected static $_parser;
 	protected static $_parser_loader;

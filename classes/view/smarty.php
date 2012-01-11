@@ -16,7 +16,7 @@ namespace Parser;
 
 use Smarty;
 
-class View_Smarty extends \View
+class View_Smarty extends View
 {
 	protected static $_parser;
 
