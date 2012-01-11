@@ -16,7 +16,7 @@ namespace Parser;
 
 use Everzet\Jade;
 
-class View_Jade extends \View
+class View_Jade extends View
 {
 
 	protected static $_jade;

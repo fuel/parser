@@ -14,7 +14,7 @@
 
 namespace Parser;
 
-class View_Markdown extends \View
+class View_Markdown extends View
 {
 
 	protected static $_parser;
