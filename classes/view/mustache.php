@@ -44,11 +44,11 @@ class View_Mustache extends \View
 	 *
 	 * @return  Mustache
 	 */
-	public static function parser()
+	public static function parser($name = 'default')
 	{
-		if ( ! empty(static::$_parser))
+		if ( ! empty(static::$_parser[$name]))
 		{
-			return static::$_parser;
+			return static::$_parser[$name];
 		}
 
 		$options = array(
@@ -57,9 +57,9 @@ class View_Mustache extends \View
 			'pragmas'     => \Config::get('parser.View_Mustache.environment.pragmas', array()),
 		);
 
-		static::$_parser = new Mustache(null, null, null, $options);
+		static::$_parser[$name] = new Mustache(null, null, null, $options);
 
-		return static::$_parser;
+		return static::$_parser[$name];
 	}
 }
 
