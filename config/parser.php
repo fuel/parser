@@ -59,7 +59,7 @@ return array(
 		'delimiters' => array(
 			'tag_block'     => array('{%', '%}'),
 			'tag_comment'   => array('{#', '#}'),
-				'tag_variable'  => array('{{', '}}'),
+			'tag_variable'  => array('{{', '}}'),
 		),
 		'environment' => array(
 			'debug'                => false,
@@ -162,4 +162,4 @@ return array(
 	),
 );
 
-				// end of file parser.php
+// end of file parser.php
