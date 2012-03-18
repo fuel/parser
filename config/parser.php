@@ -33,6 +33,7 @@ return array(
 		'jade'      => 'View_Jade',
 		'haml'      => 'View_Haml',
 		'smarty'    => 'View_Smarty',
+		'phptal'    => 'View_Phptal',
 	),
 
 
@@ -145,6 +146,19 @@ return array(
 			'autoload_filters'  => array(),
 			'default_modifiers' => array(),
 		),
+	),
+
+	// Phptal ( http://phptal.org/manual/en/ )
+	// ------------------------------------------------------------------------
+	'View_Phptal'   => array(
+		'include'   => APPPATH.'vendor'.DS.'PHPTAL'.DS.'PHPTAL.php',
+		'auto_encode' => true,
+		'cache_dir' => APPPATH.'cache'.DS.'PHPTAL'.DS,
+		'cache_lifetime' => 0,
+		'encoding' => 'UTF-8',
+		'output_mode' => 'PHPTAL::XHTML',
+		'template_repository' => '',
+		'force_reparse' => false,
 	),
 );
 
