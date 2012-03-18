@@ -66,8 +66,8 @@ class View_Smarty extends \View
 		static::$_parser->compile_check     = \Config::get('parser.View_Smarty.environment.compile_check', true);
 		static::$_parser->debugging         = \Config::get('parser.View_Smarty.environment.debugging', false);
 
-		static::$_parser->left_delimiter    = \Config::get('parser.View_Smarty.delimiters.0', '{');
-		static::$_parser->right_delimiter   = \Config::get('parser.View_Smarty.delimiters.1', '}');
+		static::$_parser->left_delimiter    = \Config::get('parser.View_Smarty.delimiters.left', '{');
+		static::$_parser->right_delimiter   = \Config::get('parser.View_Smarty.delimiters.right', '}');
 
 		static::$_parser->autoload_filters  = \Config::get('parser.View_Smarty.environment.autoload_filters', array());
 		static::$_parser->default_modifiers = \Config::get('parser.View_Smarty.environment.default_modifiers', array());

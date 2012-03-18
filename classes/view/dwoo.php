@@ -67,8 +67,8 @@ class View_Dwoo extends \View
 		static::$_parser_compiler->setLooseOpeningHandling(\Config::get('parser.View_Dwoo.environment.allow_spaces', false));
 		static::$_parser_compiler->setNestedCommentsHandling(\Config::get('parser.View_Dwoo.environment.nested_comments', false));
 		static::$_parser_compiler->setDelimiters(
-			\Config::get('parser.View_Dwoo.delimiters.0', '{'),
-			\Config::get('parser.View_Dwoo.delimiters.1', '}')
+			\Config::get('parser.View_Dwoo.delimiters.left', '{'),
+			\Config::get('parser.View_Dwoo.delimiters.right', '}')
 		);
 
 		// Security
