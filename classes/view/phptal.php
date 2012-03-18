@@ -26,7 +26,8 @@ class View_Phptal extends \View
 		try
 		{
 			$parser = static::parser();
-			foreach($this->get_data() as $key => $value) {
+			foreach($this->get_data() as $key => $value)
+            {
 				$parser->set($key,$value);
 			}
 			$parser->setTemplate($file);
