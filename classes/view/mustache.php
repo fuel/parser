@@ -52,7 +52,7 @@ class View_Mustache extends \View
 		}
 
 		$options = array(
-			'delimiters'  => array_keys(\Config::get('parser.View_Mustache.delimiters', array('{{','}}'))),
+			'delimiters'  => array_values(\Config::get('parser.View_Mustache.delimiters', array('{{','}}'))),
 			'charset'     => \Config::get('parser.View_Mustache.environment.charset', 'UTF-8'),
 			'pragmas'     => \Config::get('parser.View_Mustache.environment.pragmas', array()),
 		);
