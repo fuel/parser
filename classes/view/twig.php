@@ -84,11 +84,11 @@ class View_Twig extends \View
 		if (isset($twig_lexer_conf))
 		{
 			isset($twig_lexer_conf['tag_block'])
-				and $twig_lexer_conf['tag_block'] = array_keys($twig_lexer_conf['tag_block']);
+				and $twig_lexer_conf['tag_block'] = array_values($twig_lexer_conf['tag_block']);
 			isset($twig_lexer_conf['tag_comment'])
-				and $twig_lexer_conf['tag_comment'] = array_keys($twig_lexer_conf['tag_comment']);
+				and $twig_lexer_conf['tag_comment'] = array_values($twig_lexer_conf['tag_comment']);
 			isset($twig_lexer_conf['tag_variable'])
-				and $twig_lexer_conf['tag_variable'] = array_keys($twig_lexer_conf['tag_variable']);
+				and $twig_lexer_conf['tag_variable'] = array_values($twig_lexer_conf['tag_variable']);
 
 			$twig_lexer = new Twig_Lexer(static::$_parser, $twig_lexer_conf);
 			static::$_parser->setLexer($twig_lexer);
