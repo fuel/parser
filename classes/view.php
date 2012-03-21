@@ -65,7 +65,7 @@ class View extends \Fuel\Core\View
 	public static function forge($file = null, $data = null, $auto_encode = null)
 	{
 		$extension = pathinfo($file, PATHINFO_EXTENSION);
-		$class     = \Config::get('parser.extensions.'.$extension);
+		$class     = \Config::get('parser.extensions.'.$extension, get_called_class());
 
 		// Only get rid of the extension if it is not an absolute file path
 		if ($file[0] !== '/' and $file[1] !== ':')
