@@ -33,7 +33,9 @@ class View_Twig extends \View
 	protected function process_file($file_override = false)
 	{
 		$file = $file_override ?: $this->file_name;
-		$data = $this->get_data();
+
+		$local_data  = $this->get_data('local');
+		$global_data = $this->get_data('global');
 
 		// Extract View name/extension (ex. "template.twig")
 		$view_name = pathinfo($file, PATHINFO_BASENAME);
@@ -43,9 +45,17 @@ class View_Twig extends \View
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
 		static::$_parser_loader = new Twig_Loader_Filesystem($views_paths);
 
+		if ( ! empty($global_data))
+		{
+			foreach ($global_data as $key => $value)
+			{
+				static::parser()->addGlobal($key, $value);
+			}
+		}
+
 		try
 		{
-			return static::parser()->loadTemplate($view_name)->render($data);
+			return static::parser()->loadTemplate($view_name)->render($local_data);
 		}
 		catch (\Exception $e)
 		{
