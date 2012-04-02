@@ -50,6 +50,9 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'config'        => new Twig_Function_Function('Config::get'),
 			'lang'          => new Twig_Function_Function('Lang::get'),
 
+			'anchor'        => new Twig_Function_Function('Html::anchor'),
+			'img'           => new Twig_Function_Function('Html::img'),
+
 			'form_open'     => new Twig_Function_Function('Form::open'),
 			'form_close'    => new Twig_Function_Function('Form::close'),
 			'form_input'    => new Twig_Function_Function('Form::input'),
