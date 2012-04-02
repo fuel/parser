@@ -69,6 +69,19 @@ class Twig_Fuel_Extension extends Twig_Extension
 	}
 
 	/**
+	 * Sets up all of the filters this extension makes available.
+	 *
+	 * @return  array
+	 */
+	public function getFilters()
+	{
+		return array(
+			'date_format' => new Twig_Filter_Function('Date::format'),
+			'time_ago'    => new Twig_Filter_Function('Date::time_ago'),
+		);
+	}
+
+	/**
 	 * Provides the url() functionality.  Generates a full url (including
 	 * domain and index.php).
 	 *
