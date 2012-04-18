@@ -14,10 +14,12 @@
 
 namespace Parser;
 
+use Twig_Lexer;
 use Twig_Autoloader;
 use Twig_Environment;
+use Twig_LoaderInterface;
 use Twig_Loader_Filesystem;
-use Twig_Lexer;
+
 
 class View_Twig extends \View
 {
@@ -74,7 +76,7 @@ class View_Twig extends \View
 	 */
 	public static function parser()
 	{
-		if ( ! empty(static::$_parser))
+		if ( ! empty(static::$_parser) and static::$_parser_loader instanceof Twig_LoaderInterface)
 		{
 			static::$_parser->setLoader(static::$_parser_loader);
 			return static::$_parser;
