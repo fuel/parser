@@ -50,6 +50,9 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'config'        => new Twig_Function_Function('Config::get'),
 			'lang'          => new Twig_Function_Function('Lang::get'),
 
+			'anchor'        => new Twig_Function_Function('Html::anchor'),
+			'img'           => new Twig_Function_Function('Html::img'),
+
 			'form_open'     => new Twig_Function_Function('Form::open'),
 			'form_close'    => new Twig_Function_Function('Form::close'),
 			'form_input'    => new Twig_Function_Function('Form::input'),
@@ -70,6 +73,19 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'asset_js'      => new Twig_Function_Function('Asset::js'),
 			'asset_img'     => new Twig_Function_Function('Asset::img'),
 			'asset_render'  => new Twig_Function_Function('Asset::render'),
+		);
+	}
+
+	/**
+	 * Sets up all of the filters this extension makes available.
+	 *
+	 * @return  array
+	 */
+	public function getFilters()
+	{
+		return array(
+			'date_format' => new Twig_Filter_Function('Date::format'),
+			'time_ago'    => new Twig_Filter_Function('Date::time_ago'),
 		);
 	}
 
