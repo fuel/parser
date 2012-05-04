@@ -44,17 +44,6 @@ class View extends \Fuel\Core\View
 	}
 
 	/**
-	 * This method is deprecated...use forge() instead.
-	 *
-	 * @deprecated until 1.2
-	 */
-	public static function factory($file = null, $data = null, $auto_encode = null)
-	{
-		\Log::warning('This method is deprecated.  Please use a forge() instead.', __METHOD__);
-		return static::forge($file, $data, $auto_encode);
-	}
-
-	/**
 	 * Forges a new View object based on the extension
 	 *
 	 * @param   string  $file         view filename
