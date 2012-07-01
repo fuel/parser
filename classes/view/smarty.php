@@ -59,6 +59,7 @@ class View_Smarty extends \View
 		static::$_parser->compile_dir       = \Config::get('parser.View_Smarty.environment.compile_dir', APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS);
 		static::$_parser->config_dir        = \Config::get('parser.View_Smarty.environment.config_dir', APPPATH.'tmp'.DS.'Smarty'.DS.'configs'.DS);
 		static::$_parser->cache_dir         = \Config::get('parser.View_Smarty.environment.cache_dir', APPPATH.'cache'.DS.'Smarty'.DS);
+		static::$_parser->plugins_dir       = array_merge(static::$_parser->plugins_dir, array(\Config::get('parser.View_Smarty.environment.plugins_dir', APPPATH.'cache'.DS.'Smarty'.DS)));
 
 		static::$_parser->caching           = \Config::get('parser.View_Smarty.environment.caching', false);
 		static::$_parser->cache_lifetime    = \Config::get('parser.View_Smarty.environment.cache_lifetime', 0);
