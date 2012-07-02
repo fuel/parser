@@ -102,7 +102,7 @@ return array(
 	// MUSTACHE ( https://github.com/bobthecow/mustache.php )
 	// ------------------------------------------------------------------------
 	'View_Mustache' => array(
-		'include' => \Package::exist('parser').'vendor'.DS.'Mustache'.DS.'Mustache.php',
+		'include' => \Package::exists('parser').'vendor'.DS.'Mustache'.DS.'Mustache.php',
 		'auto_encode' => true,
 		'delimiters' => array('left' => '{{', 'right' => '}}'),
 		'environment' => array(
