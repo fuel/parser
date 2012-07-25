@@ -42,8 +42,14 @@ class View_Twig extends \View
 
 		// Twig Loader
 		$views_paths = \Config::get('parser.View_Twig.views_paths', array(APPPATH . 'views'));
+
+		foreach ($this->active_request->get_paths() as $path)
+		{
+			array_unshift($views_paths, $path.'views');
+		}
+
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
-		static::$_parser_loader = new Twig_Loader_Filesystem($views_paths);
+		static::$_parser_loader = new Twig_Loader_Filesystem(array_unique($views_paths, SORT_STRING));
 
 		if ( ! empty($global_data))
 		{
