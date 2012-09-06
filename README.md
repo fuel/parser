@@ -7,7 +7,7 @@ Simply add `parser` to your config.php `always_loaded.packages` config option.
 ## Included Parsers
 
 * Mustache - A lightweight, yet powerful templating library.
-* Markdown - A PHP version of Markdown by Michael Fortin.
+* Markdown - A PHP version of Markdown by Michel Fortin.
 
 ## Usage
 
