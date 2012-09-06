@@ -7,7 +7,7 @@ Simply add `parser` to your config.php `always_loaded.packages` config option.
 ## Included Parsers
 
 * Mustache - A lightweight, yet powerful templating library.
-* SimpleTags - A library released by Dan Horrigan for basic template tag usage.
+* Markdown - A PHP version of Markdown by Michel Fortin.
 
 ## Usage
 
