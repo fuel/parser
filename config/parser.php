@@ -20,6 +20,9 @@
  */
 
 return array(
+	
+	// Default extension to use if no filename is passed
+	'default_extension' => 'php',
 
 	// ------------------------------------------------------------------------
 	// Register extensions to their parsers, either classname or array config

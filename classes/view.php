@@ -53,8 +53,16 @@ class View extends \Fuel\Core\View
 	 */
 	public static function forge($file = null, $data = null, $auto_encode = null)
 	{
-		$extension = pathinfo($file, PATHINFO_EXTENSION);
-		$class     = \Config::get('parser.extensions.'.$extension, get_called_class());
+		if (empty($file))
+		{
+			$extension = \Config::get('parser.default_extension', 'php');
+		}
+		else
+		{
+			$extension = pathinfo($file, PATHINFO_EXTENSION);
+		}
+
+		$class = \Config::get('parser.extensions.'.$extension, get_called_class());
 
 		// Only get rid of the extension if it is not an absolute file path
 		if ($file[0] !== '/' and $file[1] !== ':')
@@ -90,8 +98,11 @@ class View extends \Fuel\Core\View
 		// Set extension when given
 		$extension and $view->extension = $extension;
 
-		// Load the view file
-		$view->set_filename($file);
+		if ( ! empty($file))
+		{
+			// Load the view file
+			$view->set_filename($file);
+		}
 
 		return $view;
 	}
