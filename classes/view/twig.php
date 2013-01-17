@@ -53,6 +53,11 @@ class View_Twig extends \View
 				static::parser()->addGlobal($key, $value);
 			}
 		}
+		else
+		{
+			// Init the parser if you have no global data
+			static::parser();
+		}
 
 		$twig_lexer = new Twig_Lexer(static::$_parser, static::$_twig_lexer_conf);
 		static::$_parser->setLexer($twig_lexer);
