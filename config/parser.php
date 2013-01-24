@@ -53,7 +53,6 @@ return array(
 	// TWIG ( http://www.twig-project.org/documentation )
 	// ------------------------------------------------------------------------
 	'View_Twig' => array(
-		'include' => APPPATH.'vendor'.DS.'Twig'.DS.'Autoloader.php',
 		'auto_encode' => true,
 		'views_paths' => array(APPPATH.'views'),
 		'delimiters' => array(
@@ -102,7 +101,6 @@ return array(
 	// MUSTACHE ( https://github.com/bobthecow/mustache.php )
 	// ------------------------------------------------------------------------
 	'View_Mustache' => array(
-		'include' => \Package::exists('parser').'vendor'.DS.'Mustache'.DS.'Mustache.php',
 		'auto_encode' => true,
 		'delimiters' => array('left' => '{{', 'right' => '}}'),
 		'environment' => array(
@@ -131,8 +129,7 @@ return array(
 	// SMARTY ( http://www.smarty.net/documentation )
 	// ------------------------------------------------------------------------
 	'View_Smarty'   => array(
-		'include'       => APPPATH.'vendor'.DS.'Smarty'.DS.'libs'.DS.'Smarty.class.php',
-		'auto_encode' => true,
+		'auto_encode'   => true,
 		'delimiters'    => array('left' => '{', 'right' => '}'),
 		'environment'   => array(
 			'compile_dir'       => APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS,
