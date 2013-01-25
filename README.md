@@ -6,7 +6,6 @@ Simply add `parser` to your config.php `always_loaded.packages` config option.
 
 ## Included Parsers
 
-* Mustache - A lightweight, yet powerful templating library.
 * Markdown - A PHP version of Markdown by Michel Fortin.
 
 ## Usage
@@ -39,7 +38,21 @@ View::forge('example.dwoo');
 
 ## Installing parsers
 
-Only Markdown and Mustache are included. While many other drivers are included, their libraries are not and are by default expected in `app/vendor/lib_name` (capitalize lib_name), you'll have to download them yourself. Don't change the casing or anything, keep it as much original as possible within the `vendor/lib_name` dir to keep updating easy (also because some come with their own autoloader).
+Only Markdown is included. While many other drivers are included, their libraries are not and are by default.
+
+Mustache, Twig and Smarty should be installed via Composer. Simply add the libraries to your project's `composer.json` then run `php composer.phar install`:
+
+```json
+{
+    "require": {
+        "mustache/mustache" : "*",
+        "smarty/smarty" : "*",
+        "twig/twig" : "*"
+    }
+}
+```
+
+Other libraries are expected in `app/vendor/lib_name` (capitalize lib_name), you'll have to download them yourself. Don't change the casing or anything, keep it as much original as possible within the `vendor/lib_name` dir to keep updating easy (also because some come with their own autoloader).
 
 You can configure them to be loaded from other locations by copying the parser.php config file to your app and editing it.
 
