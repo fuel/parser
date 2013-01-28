@@ -65,9 +65,7 @@ class View_HamlTwig extends View_Twig {
 		// Twig Loader
 		$views_paths = \Config::get('parser.View_Twig.views_paths', array(APPPATH . 'views'));
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
-		
-		$filesyst = new Twig_Loader_Filesystem($views_paths);
-		
+				
 		if ( ! empty($global_data))
 		{
 			foreach ($global_data as $key => $value)
@@ -81,6 +79,8 @@ class View_HamlTwig extends View_Twig {
 			static::parser();
 		}
 		
+		// Set the HtHaml Twig loader
+		$filesyst = new Twig_Loader_Filesystem($views_paths);
 		static::$_parser_loader = new MtHaml\Support\Twig\Loader(static::$_environment, $filesyst);
 		
 		$twig_lexer = new Twig_Lexer(static::$_parser, static::$_twig_lexer_conf);
