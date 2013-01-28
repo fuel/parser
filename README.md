@@ -23,6 +23,9 @@ View::forge('example.mustache');
 // load a Twig template, will load and parse app/views/example.twig
 View::forge('example.twig');
 
+// load a Hybrid Haml / Twig template, ATTENTION: this one expects app/views/example.twig and {% haml %} code at the top of the view
+View::forge('example.mthaml');
+
 // load a Jade template, will load and parse app/views/example.jade
 View::forge('example.jade');
 
