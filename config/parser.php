@@ -27,6 +27,7 @@ return array(
 	'extensions' => array(
 		'php'       => 'View',
 		'twig'      => 'View_Twig',
+		'mthaml'    =>  array('class' => 'View_HamlTwig', 'extension' => 'twig'),
 		'mustache'  => 'View_Mustache',
 		'md'        => 'View_Markdown',
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
@@ -72,6 +73,23 @@ return array(
 		),
 		'extensions' => array(
 			'Twig_Fuel_Extension'
+		),
+	),
+	
+	// HamlTwig with MtHaml https://github.com/arnaud-lb/MtHaml
+	// Twig configuration is grabbed from 'View_Twig' config key
+	// Packagist url: https://packagist.org/packages/mthaml/mthaml
+	// Uses > 1.1.1 (Master branch ATM)
+	// ------------------------------------------------------------------------
+	'View_HamlTwig' => array(
+		//'include' => APPPATH.'vendor'.DS.'MtHaml'.DS.'Autoloader.php',
+		'auto_encode' => true,
+		'environment' => array(
+			'auto_escaper' => true,
+			'escape_html'	 => true,
+			'escape_attrs' => true,
+			'charset' 		 => 'UTF-8',
+			'format' 		 	 => 'html5',
 		),
 	),
 
