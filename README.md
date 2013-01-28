@@ -40,14 +40,15 @@ View::forge('example.dwoo');
 
 Only Markdown is included. While many other drivers are included, their libraries are not and are by default.
 
-Mustache, Twig and Smarty should be installed via Composer. Simply add the libraries to your project's `composer.json` then run `php composer.phar install`:
+Mustache, Twig, MtHaml and Smarty should be installed via Composer. Simply add the libraries to your project's `composer.json` then run `php composer.phar install`:
 
 ```json
 {
     "require": {
         "mustache/mustache" : "*",
         "smarty/smarty" : "*",
-        "twig/twig" : "*"
+        "twig/twig" : "*",
+        "mthaml/mthaml": "*"
     }
 }
 ```
