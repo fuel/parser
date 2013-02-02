@@ -21,6 +21,7 @@ Autoloader::add_classes(array(
 	'Parser\\View_Markdown'    => __DIR__.'/classes/view/markdown.php',
 	'Parser\\View_SimpleTags'  => __DIR__.'/classes/view/simpletags.php',
 	'Parser\\View_Twig'        => __DIR__.'/classes/view/twig.php',
+	'Parser\\View_HamlTwig'    => __DIR__.'/classes/view/hamltwig.php',
 	'Parser\\Twig_Fuel_Extension' => __DIR__.'/classes/twig/fuel/extension.php',
 	'Parser\\View_Jade'        => __DIR__.'/classes/view/jade.php',
 	'Parser\\View_Haml'        => __DIR__.'/classes/view/haml.php',
