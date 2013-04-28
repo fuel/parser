@@ -45,6 +45,7 @@ class Twig_Fuel_Extension extends Twig_Extension
 		return array(
 			'url'           => new Twig_Function_Method($this, 'url'),
 			'base_url'      => new Twig_Function_Function('Uri::base'),
+			'current_url'   => new Twig_Function_Function('Uri::current'),
 			'uri_segment'   => new Twig_Function_Function('Uri::segment'),
 			'uri_segments'  => new Twig_Function_Function('Uri::segments'),
 			'config'        => new Twig_Function_Function('Config::get'),
