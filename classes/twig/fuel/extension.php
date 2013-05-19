@@ -79,7 +79,9 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'input_get'         => new Twig_Function_Function('Input::get'),
 			'input_post'        => new Twig_Function_Function('Input::post'),
 
-			'session_get_flash' => new Twig_Function_Function('Session::get_flash')
+			'session_get_flash' => new Twig_Function_Function('Session::get_flash'),
+			
+			'markdown_parse'    => new Twig_Function_Function('Markdown::parse')
 		);
 	}
 
