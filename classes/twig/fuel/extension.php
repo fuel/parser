@@ -73,12 +73,15 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'asset_js'          => new Twig_Function_Function('Asset::js'),
 			'asset_img'         => new Twig_Function_Function('Asset::img'),
 			'asset_render'      => new Twig_Function_Function('Asset::render'),
+			'asset_find_file'   => new Twig_Function_Function('Asset::find_file'),
 
 			'html_anchor'       => new Twig_Function_Function('Html::anchor'),
 			'input_get'         => new Twig_Function_Function('Input::get'),
 			'input_post'        => new Twig_Function_Function('Input::post'),
 
-			'session_get_flash' => new Twig_Function_Function('Session::get_flash')
+			'session_get_flash' => new Twig_Function_Function('Session::get_flash'),
+
+			'markdown_parse'    => new Twig_Function_Function('Markdown::parse')
 		);
 	}
 
