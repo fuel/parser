@@ -80,7 +80,7 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'input_post'        => new Twig_Function_Function('Input::post'),
 
 			'session_get_flash' => new Twig_Function_Function('Session::get_flash'),
-			
+
 			'markdown_parse'    => new Twig_Function_Function('Markdown::parse')
 		);
 	}
@@ -95,16 +95,16 @@ class Twig_Fuel_Extension extends Twig_Extension
 	 */
 	public function url($uri = '', $named_params = array())
 	{
-		if ($named_uri = Router::get($uri, $named_params))
+		if ($named_uri = \Router::get($uri, $named_params))
 		{
 			$uri = $named_uri;
 		}
 
-		return Uri::create($uri);
+		return \Uri::create($uri);
 	}
 
 	public function fuel_version()
 	{
-		return Fuel::VERSION;
+		return \Fuel::VERSION;
 	}
 }
