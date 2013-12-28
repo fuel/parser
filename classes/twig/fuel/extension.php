@@ -45,11 +45,14 @@ class Twig_Fuel_Extension extends Twig_Extension
 		return array(
 			'fuel_version'      => new Twig_Function_Method($this, 'fuel_version'),
 			'url'               => new Twig_Function_Method($this, 'url'),
+
 			'base_url'          => new Twig_Function_Function('Uri::base'),
 			'current_url'       => new Twig_Function_Function('Uri::current'),
 			'uri_segment'       => new Twig_Function_Function('Uri::segment'),
 			'uri_segments'      => new Twig_Function_Function('Uri::segments'),
+
 			'config'            => new Twig_Function_Function('Config::get'),
+
 			'lang'              => new Twig_Function_Function('Lang::get'),
 
 			'form_open'         => new Twig_Function_Function('Form::open'),
@@ -66,7 +69,10 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'form_submit'       => new Twig_Function_Function('Form::submit'),
 			'form_select'       => new Twig_Function_Function('Form::select'),
 			'form_label'        => new Twig_Function_Function('Form::label'),
+
 			'form_val'          => new Twig_Function_Function('Input::param'),
+			'input_get'         => new Twig_Function_Function('Input::get'),
+			'input_post'        => new Twig_Function_Function('Input::post'),
 
 			'asset_add_path'    => new Twig_Function_Function('Asset::add_path'),
 			'asset_css'         => new Twig_Function_Function('Asset::css'),
@@ -76,14 +82,14 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'asset_find_file'   => new Twig_Function_Function('Asset::find_file'),
 
 			'html_anchor'       => new Twig_Function_Function('Html::anchor'),
-			'input_get'         => new Twig_Function_Function('Input::get'),
-			'input_post'        => new Twig_Function_Function('Input::post'),
 
+			'session_get'       => new Twig_Function_Function('Session::get'),
 			'session_get_flash' => new Twig_Function_Function('Session::get_flash'),
 
 			'markdown_parse'    => new Twig_Function_Function('Markdown::parse'),
-			
+
 			'auth_has_access'   => new Twig_Function_Function('Auth::has_access')
+			'auth_check'        => new Twig_Function_Function('Auth::check')
 		);
 	}
 
