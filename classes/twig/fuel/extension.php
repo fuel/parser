@@ -83,7 +83,9 @@ class Twig_Fuel_Extension extends Twig_Extension
 
 			'markdown_parse'    => new Twig_Function_Function('Markdown::parse'),
 			
-			'auth_has_access'   => new Twig_Function_Function('Auth::has_access')
+			'auth_has_access'   => new Twig_Function_Function('Auth::has_access'),
+			'auth_check'        => new Twig_Function_Function('Auth::check'),
+			'get_screen_name'   => new Twig_Function_Function('Auth::get_screen_name')			
 		);
 	}
 
