@@ -14,16 +14,17 @@
 
 namespace Parser;
 
-use Fuel\Core\Asset;
-use Fuel\Core\Config;
-use Fuel\Core\Form;
-use Fuel\Core\Html;
-use Fuel\Core\Input;
-use Fuel\Core\Lang;
-use Fuel\Core\Markdown;
-use Fuel\Core\Router;
-use Fuel\Core\Session;
-use Fuel\Core\Uri;
+use Asset;
+use Auth;
+use Config;
+use Form;
+use Html;
+use Input;
+use Lang;
+use Markdown;
+use Router;
+use Session;
+use Uri;
 
 /**
  * Provides Smarty support for commonly used FuelPHP classes and methods.
@@ -69,7 +70,7 @@ class Smarty_Fuel_Extension {
         $smarty->registerPlugin('function', 'session_get_flash', array($this, 'session_get_flash'));
         $smarty->registerPlugin('block', 'markdown', array($this, 'markdown_parse'));
         $smarty->registerPlugin('function', 'auth_has_access', array($this, 'auth_has_access'));
-        $smarty->registerPlugin('function', 'auth_check', array('Auth', 'check'));
+        $smarty->registerPlugin('function', 'auth_check', array($this, 'auth_check'));
     }
 
     public function fuel_version() {
@@ -533,4 +534,12 @@ class Smarty_Fuel_Extension {
         return Auth::has_access($params['cond']);
     }
 
+    /**
+     * Usage: {auth_check}
+     *
+     * @return bool
+     */
+    public function auth_check() {
+        return Auth::check();
+    }
 }
