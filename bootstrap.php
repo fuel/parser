@@ -26,6 +26,7 @@ Autoloader::add_classes(array(
 	'Parser\\View_Jade'        => __DIR__.'/classes/view/jade.php',
 	'Parser\\View_Haml'        => __DIR__.'/classes/view/haml.php',
 	'Parser\\View_Smarty'      => __DIR__.'/classes/view/smarty.php',
+	'Parser\\Smarty_Fuel_Extension' => __DIR__.'/classes/smarty/fuel/extension.php',
 	'Parser\\View_Phptal'      => __DIR__.'/classes/view/phptal.php',
 ));
 
