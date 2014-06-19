@@ -78,12 +78,9 @@ class View_Markdown extends \View
 		static $parser = null;
 		if (is_null($parser))
 		{
-			$parser_class = \MARKDOWN_PARSER_CLASS;
-			$parser = new $parser_class;
+			$parser = new \Michelf\MarkdownExtra();
 		}
 
 		return $parser;
 	}
 }
-
-// end of file mustache.php
