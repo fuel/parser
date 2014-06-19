@@ -181,11 +181,10 @@ return array(
 	),
 
 	// Lex ( http://github.com/pyrocms/lex/ )
+	// Packagist url: https://packagist.org/packages/pyrocms/lex
 	// ------------------------------------------------------------------------
 	'View_Lex' => array(
 		'scope_glue' => '.',
 		'allow_php'  => false,
 	),
 );
-
-// end of file parser.php
