@@ -36,6 +36,7 @@ return array(
 		'haml'      => 'View_Haml',
 		'smarty'    => 'View_Smarty',
 		'phptal'    => 'View_Phptal',
+		'lex'       => 'View_Lex',
 	),
 
 
@@ -177,6 +178,13 @@ return array(
 		'output_mode' => 'PHPTAL::XHTML',
 		'template_repository' => '',
 		'force_reparse' => false,
+	),
+
+	// Lex ( http://github.com/pyrocms/lex/ )
+	// ------------------------------------------------------------------------
+	'View_Lex' => array(
+		'scope_glue' => '.',
+		'allow_php'  => false,
 	),
 );
 

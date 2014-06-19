@@ -35,6 +35,9 @@ View::forge('example.haml');
 // load a Smarty template, will load and parse app/views/example.smarty
 View::forge('example.smarty');
 
+// load a Lex template, will load and parse app/views/example.lex
+View::forge('example.lex');
+
 // load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
 View::forge('example.dwoo');
 ```
@@ -43,7 +46,7 @@ View::forge('example.dwoo');
 
 Only Markdown is included. While many other drivers are included, their libraries are not and are by default.
 
-Mustache, Twig, MtHaml and Smarty should be installed via Composer. Simply add the libraries to your project's `composer.json` then run `php composer.phar install`:
+Mustache, Twig, MtHaml, Lex and Smarty should be installed via Composer. Simply add the libraries to your project's `composer.json` then run `php composer.phar install`:
 
 ```json
 {
@@ -51,7 +54,8 @@ Mustache, Twig, MtHaml and Smarty should be installed via Composer. Simply add t
         "mustache/mustache" : "*",
         "smarty/smarty" : "*",
         "twig/twig" : "*",
-        "mthaml/mthaml": "*"
+        "mthaml/mthaml": "*",
+		"pyrocms/lex": "2.2.*"
     }
 }
 ```
