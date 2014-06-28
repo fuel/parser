@@ -45,8 +45,15 @@ class View_Twig extends \View
 		$views_paths = \Config::get('parser.View_Twig.views_paths', array(APPPATH . 'views'));
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
 		static::$_parser_loader = new Twig_Loader_Filesystem($views_paths);
+        if(!empty(\Module::loaded())){
+            $mods = \Module::loaded();
+            foreach ($mods as $mod) {
+                $m_name = explode('modules/',$mod);
+                static::$_parser_loader->addPath($mod.'views/',rtrim($m_name[1],'/'));
+            }
+        }
 
-		if ( ! empty($global_data))
+        if ( ! empty($global_data))
 		{
 			foreach ($global_data as $key => $value)
 			{
@@ -92,8 +99,8 @@ class View_Twig extends \View
 		// Twig Environment
 		$twig_env_conf = \Config::get('parser.View_Twig.environment', array('optimizer' => -1));
 		static::$_parser = new Twig_Environment(static::$_parser_loader, $twig_env_conf);
-
-		foreach (\Config::get('parser.View_Twig.extensions') as $ext)
+        $mods = \Module::loaded();
+        foreach (\Config::get('parser.View_Twig.extensions') as $ext)
 		{
 			static::$_parser->addExtension(new $ext());
 		}
