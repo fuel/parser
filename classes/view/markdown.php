@@ -8,7 +8,7 @@
  * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2013 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -78,12 +78,9 @@ class View_Markdown extends \View
 		static $parser = null;
 		if (is_null($parser))
 		{
-			$parser_class = \MARKDOWN_PARSER_CLASS;
-			$parser = new $parser_class;
+			$parser = new \Michelf\MarkdownExtra();
 		}
 
 		return $parser;
 	}
 }
-
-// end of file mustache.php

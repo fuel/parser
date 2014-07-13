@@ -8,7 +8,7 @@
  * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2013 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -73,7 +73,9 @@ class View_Smarty extends \View
 
 		static::$_parser->autoload_filters  = \Config::get('parser.View_Smarty.environment.autoload_filters', array());
 		static::$_parser->default_modifiers = \Config::get('parser.View_Smarty.environment.default_modifiers', array());
-
+                foreach (\Config::get('parser.View_Smarty.extensions', array()) as $extension){
+                    new $extension(static::$_parser);
+                }
 		return static::$_parser;
 	}
 }
