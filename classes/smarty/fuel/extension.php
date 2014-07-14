@@ -491,7 +491,7 @@ class Smarty_Fuel_Extension {
         }
         $attrs = isset($params['folder']) ? $params['folder'] : array();
         $secure = isset($params['secure']) ? $params['secure'] : null;
-        return Html::anchor($params['file'], $params['text'], $attrs, $secure);
+        return Html::anchor($params['href'], $params['text'], $attrs, $secure);
     }
 
     /**
