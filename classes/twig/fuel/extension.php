@@ -81,7 +81,12 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'asset_render'      => new Twig_Function_Function('Asset::render'),
 			'asset_find_file'   => new Twig_Function_Function('Asset::find_file'),
 
+			'theme_asset_css'   => new Twig_Function_Method($this, 'theme_asset_css'),
+			'theme_asset_js'    => new Twig_Function_Method($this, 'theme_asset_js'),
+			'theme_asset_img'   => new Twig_Function_Method($this, 'theme_asset_img'),
+
 			'html_anchor'       => new Twig_Function_Function('Html::anchor'),
+			'html_mail_to_safe' => new Twig_Function_Function('Html::mail_to_safe'),
 
 			'session_get'       => new Twig_Function_Function('Session::get'),
 			'session_get_flash' => new Twig_Function_Function('Session::get_flash'),
@@ -114,5 +119,20 @@ class Twig_Fuel_Extension extends Twig_Extension
 	public function fuel_version()
 	{
 		return \Fuel::VERSION;
+	}
+
+	public function theme_asset_css($stylesheets = array(), $attr = array(), $group = null, $raw = false)
+	{
+		return \Theme::instance()->asset->css($stylesheets, $attr, $group, $raw);
+	}
+
+	public function theme_asset_js($scripts = array(), $attr = array(), $group = null, $raw = false)
+	{
+		return \Theme::instance()->asset->js($scripts, $attr, $group, $raw);
+	}
+
+	public function theme_asset_img($images = array(), $attr = array(), $group = null)
+	{
+		return \Theme::instance()->asset->img($images, $attr, $group);
 	}
 }
