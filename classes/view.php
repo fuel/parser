@@ -111,24 +111,4 @@ class View extends \Fuel\Core\View
 
 		return $view;
 	}
-
-	/**
-	 * Sets the view filename.
-	 *
-	 *     $view->set_filename($file);
-	 *
-	 * @param   string  view filename
-	 * @return  View
-	 * @throws  FuelException
-	 */
-	public function set_filename($file)
-	{
-		switch ($this->extension)
-		{
-			case 'php':
-				return parent::set_filename($file);
-
-			default:
-		}
-	}
 }
