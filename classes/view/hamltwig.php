@@ -21,7 +21,6 @@ use Twig_Lexer;
 use MtHaml;
 
 class View_HamlTwig extends View_Twig {
-
 	protected static $_environment;
 
 	/**
@@ -34,7 +33,7 @@ class View_HamlTwig extends View_Twig {
 		// Include View_HamlTwig file(s) defined in config.
 		$includes = \Config::get('parser.View_Twig.include');
 
-		foreach ((array)$includes as $include)
+		foreach ((array) $includes as $include)
 		{
 			require $include;
 			static::$loaded_files[$include] = true;

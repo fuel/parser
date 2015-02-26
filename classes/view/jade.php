@@ -18,7 +18,6 @@ use Everzet\Jade;
 
 class View_Jade extends \View
 {
-
 	protected static $_jade;
 	protected static $_cache;
 

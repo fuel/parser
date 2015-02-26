@@ -30,7 +30,6 @@ use Uri;
  * Provides Smarty support for commonly used FuelPHP classes and methods.
  */
 class Smarty_Fuel_Extension {
-
     /**
      * Sets up all of the functions this extension makes available.
      */
@@ -80,7 +79,7 @@ class Smarty_Fuel_Extension {
     /**
      * Provides the url() functionality.  Generates a full url (including
      * domain and index.php).
-     * 
+     *
      * Usage: {url uri='' params=[name=>$value]}
      *
      * @return  string
@@ -139,7 +138,7 @@ class Smarty_Fuel_Extension {
 
     /**
      * Usage: {form attrs=[] hidden=[]}...{/form}
-     * 
+     *
      * @return  string
      */
     public function form($params, $content, $smarty, &$repeat) {
@@ -155,7 +154,7 @@ class Smarty_Fuel_Extension {
 
     /**
      * Usage: {form_fieldset attrs=[] legend=''}...{/form}
-     * 
+     *
      * @return  string
      */
     public function form_fieldset($params, $content, $smarty, &$repeat) {
@@ -511,7 +510,7 @@ class Smarty_Fuel_Extension {
 
     /**
      * Usage: {markdown}...{/markdown}
-     * 
+     *
      * @return  string
      */
     public function markdown_parse($params, $content, $smarty, &$repeat) {
