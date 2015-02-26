@@ -16,7 +16,6 @@ namespace Parser;
 
 class View_Markdown extends \View
 {
-
 	protected static $_parser;
 
 	protected function process_file($file_override = false)

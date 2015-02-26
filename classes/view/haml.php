@@ -18,7 +18,6 @@ use HamlParser;
 
 class View_Haml extends \View
 {
-
 	protected static $_parser;
 	protected static $_cache;
 

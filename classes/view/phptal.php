@@ -16,7 +16,6 @@ namespace Parser;
 
 class View_Phptal extends \View
 {
-
 	protected static $_parser;
 
 	protected function process_file($file_override = false)
@@ -28,7 +27,7 @@ class View_Phptal extends \View
 			$parser = static::parser();
 			foreach($this->get_data() as $key => $value)
 			{
-				$parser->set($key,$value);
+				$parser->set($key, $value);
 			}
 			$parser->setTemplate($file);
 			return $parser->execute();
