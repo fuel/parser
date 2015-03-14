@@ -53,6 +53,8 @@ class Twig_Fuel_Extension extends Twig_Extension
 
 			'config'            => new Twig_Function_Function('Config::get'),
 
+			'dump'              => new Twig_Function_Function('Debug::dump'),
+
 			'lang'              => new Twig_Function_Function('Lang::get'),
 
 			'form_open'         => new Twig_Function_Function('Form::open'),
