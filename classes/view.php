@@ -8,7 +8,7 @@
  * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2014 Fuel Development Team
+ * @copyright  2010 - 2015 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -16,7 +16,6 @@ namespace Parser;
 
 class View extends \Fuel\Core\View
 {
-
 	/**
 	 * @var  array  Holds the list of loaded files.
 	 */
@@ -54,6 +53,8 @@ class View extends \Fuel\Core\View
 	public static function forge($file = null, $data = null, $auto_encode = null)
 	{
 		$class = null;
+
+		$extension = 'php';
 
 		if ($file !== null)
 		{

@@ -8,8 +8,9 @@
  * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2014 Fuel Development Team
+ * @copyright  2010 - 2015 Fuel Development Team
  * @link       http://fuelphp.com
+ */
 
 /**
  * NOTICE:
@@ -26,19 +27,18 @@ return array(
 	// Register extensions to their parsers, either classname or array config
 	// ------------------------------------------------------------------------
 	'extensions' => array(
-		'php'       => 'View',
-		'twig'      => 'View_Twig',
-		'mthaml'    =>  array('class' => 'View_HamlTwig', 'extension' => 'twig'),
-		'mustache'  => 'View_Mustache',
-		'md'        => 'View_Markdown',
-		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
-		'jade'      => 'View_Jade',
-		'haml'      => 'View_Haml',
-		'smarty'    => 'View_Smarty',
-		'phptal'    => 'View_Phptal',
-		'lex'       => 'View_Lex',
+		'php'      => 'View',
+		'twig'     => 'View_Twig',
+		'mthaml'   =>  array('class' => 'View_HamlTwig', 'extension' => 'twig'),
+		'mustache' => 'View_Mustache',
+		'md'       => 'View_Markdown',
+		'dwoo'     => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
+		'jade'     => 'View_Jade',
+		'haml'     => 'View_Haml',
+		'smarty'   => 'View_Smarty',
+		'phptal'   => 'View_Phptal',
+		'lex'      => 'View_Lex',
 	),
-
 
 	// ------------------------------------------------------------------------
 	// Individual class config by classname
@@ -48,9 +48,9 @@ return array(
 	// MARKDOWN ( http://michelf.com/projects/php-markdown/ )
 	// ------------------------------------------------------------------------
 	'View_Markdown' => array(
-		'include'      => \Package::exists('parser').'vendor'.DS.'markdown'.DS.'markdown.php',
-		'auto_encode'  => true,
-		'allow_php'    => true,
+		'include'     => \Package::exists('parser').'vendor'.DS.'markdown'.DS.'markdown.php',
+		'auto_encode' => true,
+		'allow_php'   => true,
 	),
 
 	// TWIG ( http://www.twig-project.org/documentation )
@@ -58,23 +58,23 @@ return array(
 	'View_Twig' => array(
 		'auto_encode' => true,
 		'views_paths' => array(APPPATH.'views'),
-		'delimiters' => array(
-			'tag_block'     => array('left' => '{%', 'right' => '%}'),
-			'tag_comment'   => array('left' => '{#', 'right' => '#}'),
-			'tag_variable'  => array('left' => '{{', 'right' => '}}'),
+		'delimiters'  => array(
+			'tag_block'    => array('left' => '{%', 'right' => '%}'),
+			'tag_comment'  => array('left' => '{#', 'right' => '#}'),
+			'tag_variable' => array('left' => '{{', 'right' => '}}'),
 		),
 		'environment' => array(
-			'debug'                => false,
-			'charset'              => 'utf-8',
-			'base_template_class'  => 'Twig_Template',
-			'cache'                => APPPATH.'cache'.DS.'twig'.DS,
-			'auto_reload'          => true,
-			'strict_variables'     => false,
-			'autoescape'           => false,
-			'optimizations'        => -1,
+			'debug'               => false,
+			'charset'             => 'utf-8',
+			'base_template_class' => 'Twig_Template',
+			'cache'               => APPPATH.'cache'.DS.'twig'.DS,
+			'auto_reload'         => true,
+			'strict_variables'    => false,
+			'autoescape'          => false,
+			'optimizations'       => -1,
 		),
 		'extensions' => array(
-			'Twig_Fuel_Extension'
+			'Twig_Fuel_Extension',
 		),
 	),
 
@@ -84,37 +84,37 @@ return array(
 	// Uses > 1.1.1 (Master branch ATM)
 	// ------------------------------------------------------------------------
 	'View_HamlTwig' => array(
-		//'include' => APPPATH.'vendor'.DS.'MtHaml'.DS.'Autoloader.php',
+		//'include'   => APPPATH.'vendor'.DS.'MtHaml'.DS.'Autoloader.php',
 		'auto_encode' => true,
 		'environment' => array(
 			'auto_escaper' => true,
-			'escape_html'	 => true,
+			'escape_html'  => true,
 			'escape_attrs' => true,
-			'charset' 		 => 'UTF-8',
-			'format' 		 	 => 'html5',
+			'charset'      => 'UTF-8',
+			'format'       => 'html5',
 		),
 	),
 
 	// DWOO ( http://wiki.dwoo.org/ )
 	// ------------------------------------------------------------------------
 	'View_Dwoo' => array(
-		'include' => APPPATH.'vendor'.DS.'Dwoo'.DS.'dwooAutoload.php',
+		'include'     => APPPATH.'vendor'.DS.'Dwoo'.DS.'dwooAutoload.php',
 		'auto_encode' => true,
-		'delimiters' => array('left' => '{{', 'right' => '}}'),
+		'delimiters'  => array('left' => '{{', 'right' => '}}'),
 		'environment' => array(
-			'autoescape'       => false,
-			'nested_comments'  => false,
-			'allow_spaces'     => false,
-			'cache_dir'        => APPPATH.'cache'.DS.'dwoo'.DS,
-			'compile_dir'      => APPPATH.'cache'.DS.'dwoo'.DS.'compiled'.DS,
-			'cache_time'       => 0,
+			'autoescape'      => false,
+			'nested_comments' => false,
+			'allow_spaces'    => false,
+			'cache_dir'       => APPPATH.'cache'.DS.'dwoo'.DS,
+			'compile_dir'     => APPPATH.'cache'.DS.'dwoo'.DS.'compiled'.DS,
+			'cache_time'      => 0,
 
 			// Set what parser should do with PHP tags
 			// 1 - Encode tags | 2 - Remove tags | 3 - Allow tags
-			'allow_php_tags'   => 2,
+			'allow_php_tags' => 2,
 
 			// Which PHP functions should be accessible through Parser
-			'allow_php_func'   => array(),
+			'allow_php_func' => array(),
 		),
 	),
 
@@ -134,25 +134,25 @@ return array(
 	// See notes in /parser/classes/view/jade.php
 	// ------------------------------------------------------------------------
 	'View_Jade' => array(
-		'include'      => APPPATH.'vendor'.DS.'Jade'.DS.'autoload.php.dist',
-		'auto_encode'  => true,
-		'cache_dir'    => APPPATH.'cache'.DS.'jade'.DS,
+		'include'     => APPPATH.'vendor'.DS.'Jade'.DS.'autoload.php.dist',
+		'auto_encode' => true,
+		'cache_dir'   => APPPATH.'cache'.DS.'jade'.DS,
 	),
 
 	// HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
 	// ------------------------------------------------------------------------
-	'View_Haml'   => array(
-		'include'      => APPPATH.'vendor'.DS.'Phamlp'.DS.'haml'.DS.'HamlParser.php',
-		'auto_encode'  => true,
-		'cache_dir'    => APPPATH.'cache'.DS.'haml'.DS,
+	'View_Haml' => array(
+		'include'     => APPPATH.'vendor'.DS.'Phamlp'.DS.'haml'.DS.'HamlParser.php',
+		'auto_encode' => true,
+		'cache_dir'   => APPPATH.'cache'.DS.'haml'.DS,
 	),
 
 	// SMARTY ( http://www.smarty.net/documentation )
 	// ------------------------------------------------------------------------
-	'View_Smarty'   => array(
-		'auto_encode'   => true,
-		'delimiters'    => array('left' => '{', 'right' => '}'),
-		'environment'   => array(
+	'View_Smarty' => array(
+		'auto_encode' => true,
+		'delimiters'  => array('left' => '{', 'right' => '}'),
+		'environment' => array(
 			'compile_dir'       => APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS,
 			'config_dir'        => APPPATH.'tmp'.DS.'Smarty'.DS.'configs'.DS,
 			'cache_dir'         => APPPATH.'cache'.DS.'Smarty'.DS,
@@ -169,15 +169,15 @@ return array(
 
 	// Phptal ( http://phptal.org/manual/en/ )
 	// ------------------------------------------------------------------------
-	'View_Phptal'   => array(
-		'include'   => APPPATH.'vendor'.DS.'PHPTAL'.DS.'PHPTAL.php',
-		'auto_encode' => true,
-		'cache_dir' => APPPATH.'cache'.DS.'PHPTAL'.DS,
-		'cache_lifetime' => 0,
-		'encoding' => 'UTF-8',
-		'output_mode' => 'PHPTAL::XHTML',
+	'View_Phptal' => array(
+		'include'             => APPPATH.'vendor'.DS.'PHPTAL'.DS.'PHPTAL.php',
+		'auto_encode'         => true,
+		'cache_dir'           => APPPATH.'cache'.DS.'PHPTAL'.DS,
+		'cache_lifetime'      => 0,
+		'encoding'            => 'UTF-8',
+		'output_mode'         => 'PHPTAL::XHTML',
 		'template_repository' => '',
-		'force_reparse' => false,
+		'force_reparse'       => false,
 	),
 
 	// Lex ( http://github.com/pyrocms/lex/ )
