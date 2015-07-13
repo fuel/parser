@@ -15,6 +15,7 @@
 namespace Parser;
 
 use Mustache_Engine;
+use Mustache_Loader_FilesystemLoader;
 
 class View_Mustache extends \View
 {
@@ -57,12 +58,19 @@ class View_Mustache extends \View
 			'charset' => \Config::get('parser.View_Mustache.environment.charset', 'UTF-8'),
 		);
 
-		if ($partials = \Config::get('parser.View_Mustache.environment.partials', array())) {
+		if ($partials = \Config::get('parser.View_Mustache.environment.partials', array()))
+		{
 			$options['partials'] = $partials;
 		}
 
-		if ($helpers = \Config::get('parser.View_Mustache.environment.helpers', array())) {
+		if ($helpers = \Config::get('parser.View_Mustache.environment.helpers', array()))
+		{
 			$options['helpers'] = $helpers;
+		}
+
+		if ($partials = \Config::get('parser.View_Mustache.environment.partials_loader', 'UTF-8'))
+		{
+			$options['partials_loader'] = new Mustache_Loader_FilesystemLoader($partials);
 		}
 
 		static::$_parser = new Mustache_Engine($options);
