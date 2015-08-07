@@ -472,7 +472,7 @@ class Smarty_Fuel_Extension {
             throw new \UnexpectedValueException("The type parameter is required.");
         }
         $folder = isset($params['folder']) ? $params['folder'] : '';
-        return Asset::find_file($params['file'], $params['file'], $folder);
+        return Asset::find_file($params['file'], $params['type'], $folder);
     }
 
     /**
