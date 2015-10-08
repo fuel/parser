@@ -488,7 +488,7 @@ class Smarty_Fuel_Extension {
         if (!isset($params['text'])) {
             throw new \UnexpectedValueException("The text parameter is required.");
         }
-        $attrs = isset($params['folder']) ? $params['folder'] : array();
+        $attrs = isset($params['attrs']) ? $params['attrs'] : array();
         $secure = isset($params['secure']) ? $params['secure'] : null;
         return Html::anchor($params['href'], $params['text'], $attrs, $secure);
     }
