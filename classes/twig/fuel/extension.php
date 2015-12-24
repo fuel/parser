@@ -41,29 +41,34 @@ class Twig_Fuel_Extension extends Twig_Extension
 	 * @return  array
 	 */
 	public function getFunctions() 
-        {
-            $functions = array();
-            // Get config file //
-            $config = \Config::load('twig', true);
+	{
+        $functions = array();
+        // Get config file //
+        $config = \Config::load('twig', true);
 
-            // Loop through config results //
-            foreach ($config as $name => $v) {
-                // Loop through inner array consisting of class and function //
-                foreach ($v as $class => $function) {
-                    // Single out this class //
-                    if ($class == 'Twig_Fuel_Extension') {
-                        $functions[$name] = new Twig_Function_Method($this, $function);
-                    } else {
-                        $functions[$name] = new Twig_Function_Function($class . '::' . $function);
-                    }
+        // Loop through config results //
+        foreach ($config as $name => $v) 
+        {
+            // Loop through inner array consisting of class and function //
+            foreach ($v as $class => $function) 
+            {
+                // Single out this class //
+                if ($class == 'Twig_Fuel_Extension') 
+                {
+                    $functions[$name] = new Twig_Function_Method($this, $function);
+                } 
+                else 
+                {
+                    $functions[$name] = new Twig_Function_Function($class . '::' . $function);
                 }
             }
-            
-            // Return generated results //
-            return $functions;
         }
+            
+        // Return generated results //
+        return $functions;
+    }
 
-        /**
+    /**
 	 * Provides the url() functionality.  Generates a full url (including
 	 * domain and index.php).
 	 *
