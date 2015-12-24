@@ -40,67 +40,30 @@ class Twig_Fuel_Extension extends Twig_Extension
 	 *
 	 * @return  array
 	 */
-	public function getFunctions()
-	{
-		return array(
-			'fuel_version'      => new Twig_Function_Method($this, 'fuel_version'),
-			'url'               => new Twig_Function_Method($this, 'url'),
+	public function getFunctions() 
+        {
+            $functions = array();
+            // Get config file //
+            $config = \Config::load('twig', true);
 
-			'base_url'          => new Twig_Function_Function('Uri::base'),
-			'current_url'       => new Twig_Function_Function('Uri::current'),
-			'uri_segment'       => new Twig_Function_Function('Uri::segment'),
-			'uri_segments'      => new Twig_Function_Function('Uri::segments'),
+            // Loop through config results //
+            foreach ($config as $name => $v) {
+                // Loop through inner array consisting of class and function //
+                foreach ($v as $class => $function) {
+                    // Single out this class //
+                    if ($class == 'Twig_Fuel_Extension') {
+                        $functions[$name] = new Twig_Function_Method($this, $function);
+                    } else {
+                        $functions[$name] = new Twig_Function_Function($class . '::' . $function);
+                    }
+                }
+            }
+            
+            // Return generated results //
+            return $functions;
+        }
 
-			'config'            => new Twig_Function_Function('Config::get'),
-
-			'dump'              => new Twig_Function_Function('Debug::dump'),
-
-			'lang'              => new Twig_Function_Function('Lang::get'),
-
-			'form_open'         => new Twig_Function_Function('Form::open'),
-			'form_close'        => new Twig_Function_Function('Form::close'),
-			'form_input'        => new Twig_Function_Function('Form::input'),
-			'form_password'     => new Twig_Function_Function('Form::password'),
-			'form_hidden'       => new Twig_Function_Function('Form::hidden'),
-			'form_radio'        => new Twig_Function_Function('Form::radio'),
-			'form_checkbox'     => new Twig_Function_Function('Form::checkbox'),
-			'form_textarea'     => new Twig_Function_Function('Form::textarea'),
-			'form_file'         => new Twig_Function_Function('Form::file'),
-			'form_button'       => new Twig_Function_Function('Form::button'),
-			'form_reset'        => new Twig_Function_Function('Form::reset'),
-			'form_submit'       => new Twig_Function_Function('Form::submit'),
-			'form_select'       => new Twig_Function_Function('Form::select'),
-			'form_label'        => new Twig_Function_Function('Form::label'),
-
-			'form_val'          => new Twig_Function_Function('Input::param'),
-			'input_get'         => new Twig_Function_Function('Input::get'),
-			'input_post'        => new Twig_Function_Function('Input::post'),
-
-			'asset_add_path'    => new Twig_Function_Function('Asset::add_path'),
-			'asset_css'         => new Twig_Function_Function('Asset::css'),
-			'asset_js'          => new Twig_Function_Function('Asset::js'),
-			'asset_img'         => new Twig_Function_Function('Asset::img'),
-			'asset_render'      => new Twig_Function_Function('Asset::render'),
-			'asset_find_file'   => new Twig_Function_Function('Asset::find_file'),
-
-			'theme_asset_css'   => new Twig_Function_Method($this, 'theme_asset_css'),
-			'theme_asset_js'    => new Twig_Function_Method($this, 'theme_asset_js'),
-			'theme_asset_img'   => new Twig_Function_Method($this, 'theme_asset_img'),
-
-			'html_anchor'       => new Twig_Function_Function('Html::anchor'),
-			'html_mail_to_safe' => new Twig_Function_Function('Html::mail_to_safe'),
-
-			'session_get'       => new Twig_Function_Function('Session::get'),
-			'session_get_flash' => new Twig_Function_Function('Session::get_flash'),
-
-			'markdown_parse'    => new Twig_Function_Function('Markdown::parse'),
-
-			'auth_has_access'   => new Twig_Function_Function('Auth::has_access'),
-			'auth_check'        => new Twig_Function_Function('Auth::check'),
-		);
-	}
-
-	/**
+        /**
 	 * Provides the url() functionality.  Generates a full url (including
 	 * domain and index.php).
 	 *
