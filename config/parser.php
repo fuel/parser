@@ -134,9 +134,16 @@ return array(
 	// See notes in /parser/classes/view/jade.php
 	// ------------------------------------------------------------------------
 	'View_Jade' => array(
+		// global config
+		'cache_dir'   => APPPATH.'cache'.DS.'jade'.DS,
+
+		// Everzet config
 		'include'     => APPPATH.'vendor'.DS.'Jade'.DS.'autoload.php.dist',
 		'auto_encode' => true,
-		'cache_dir'   => APPPATH.'cache'.DS.'jade'.DS,
+
+		// Tale config
+		'lifetime'    => 3600,
+		'pretty'      => false,
 	),
 
 	// HAML / PHAMLP ( http://code.google.com/p/phamlp/ )
