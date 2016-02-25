@@ -87,7 +87,7 @@ class View_HamlTwig extends View_Twig {
 		//\Debug::dump(static::parser()); exit();
 		try
 		{
-			return static::parser()->render($view_name, $local_data);
+			$result = static::parser()->render($view_name, $local_data);
 		}
 		catch (\Exception $e)
 		{
@@ -95,6 +95,11 @@ class View_HamlTwig extends View_Twig {
 			ob_end_clean();
 			throw $e;
 		}
+
+		$this->unsanitize($local_data);
+		$this->unsanitize($global_data);
+
+		return $result;
 	}
 
 	/**

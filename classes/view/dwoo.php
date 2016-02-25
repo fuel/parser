@@ -31,7 +31,7 @@ class View_Dwoo extends \View
 
 		try
 		{
-			return static::parser()->get($file, $data);
+			$result = static::parser()->get($file, $data);
 		}
 		catch (\Exception $e)
 		{
@@ -39,6 +39,9 @@ class View_Dwoo extends \View
 			ob_end_clean();
 			throw $e;
 		}
+
+		$this->unsanitize($data);
+		return $result;
 	}
 
 	public $extension = 'tpl';

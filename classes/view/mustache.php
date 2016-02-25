@@ -28,7 +28,7 @@ class View_Mustache extends \View
 
 		try
 		{
-			return static::parser()->render(file_get_contents($file), $data);
+			$result = static::parser()->render(file_get_contents($file), $data);
 		}
 		catch (\Exception $e)
 		{
@@ -36,6 +36,9 @@ class View_Mustache extends \View
 			ob_end_clean();
 			throw $e;
 		}
+
+		$this->unsanitize($data);
+		return $result;
 	}
 
 	public $extension = 'mustache';

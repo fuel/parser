@@ -26,7 +26,8 @@ class View_Markdown extends \View
 
 		if (\Config::get('parser.View_Markdown.allow_php', false))
 		{
-			$contents = static::pre_process('php', $file, $this->get_data());
+			$contents = static::pre_process('php', $file, $data = $this->get_data());
+			$this->unsanitize($data);
 		}
 		else
 		{

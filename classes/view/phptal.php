@@ -25,12 +25,13 @@ class View_Phptal extends \View
 		try
 		{
 			$parser = static::parser();
-			foreach($this->get_data() as $key => $value)
+			$data = $this->get_data();
+			foreach($data as $key => $value)
 			{
 				$parser->set($key, $value);
 			}
 			$parser->setTemplate($file);
-			return $parser->execute();
+			$result = $parser->execute();
 		}
 		catch (\Exception $e)
 		{
@@ -38,6 +39,9 @@ class View_Phptal extends \View
 			ob_end_clean();
 			throw $e;
 		}
+
+		$this->unsanitize($data);
+		return $result;
 	}
 
 	public $extension = 'phptal';
