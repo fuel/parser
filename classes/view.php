@@ -68,12 +68,6 @@ class View extends \Fuel\Core\View
 			$class = get_called_class();
 		}
 
-		// Only get rid of the extension if it is not an absolute file path
-		if ($file !== null and $file[0] !== '/' and $file[1] !== ':')
-		{
-			$file = $extension ? preg_replace('/\.'.preg_quote($extension).'$/i', '', $file) : $file;
-		}
-
 		// Class can be an array config
 		if (is_array($class))
 		{
@@ -97,16 +91,7 @@ class View extends \Fuel\Core\View
 			$auto_encode = \Config::get('parser.'.$class.'.auto_encode', null);
 		}
 
-		$view = new $class(null, $data, $auto_encode);
-
-		if ($file !== null)
-		{
-			// Set extension when given
-			$extension and $view->extension = $extension;
-
-			// Load the view file
-			$view->set_filename($file);
-		}
+		$view = new $class($file, $data, $auto_encode);
 
 		return $view;
 	}
