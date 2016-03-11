@@ -97,6 +97,7 @@ class Twig_Fuel_Extension extends Twig_Extension
 
 			'auth_has_access'   => new Twig_Function_Function('Auth::has_access'),
 			'auth_check'        => new Twig_Function_Function('Auth::check'),
+			'auth_get'	        => new Twig_Function_Function('Auth::get'),
 		);
 	}
 
