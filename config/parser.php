@@ -172,6 +172,9 @@ return array(
 			'autoload_filters'  => array(),
 			'default_modifiers' => array(),
 		),
+		'extensions' => array(
+			'Smarty_Fuel_Extension',
+		),
 	),
 
 	// Phptal ( http://phptal.org/manual/en/ )
