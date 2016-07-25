@@ -23,7 +23,17 @@ class View extends \Fuel\Core\View
 
 	public static function _init()
 	{
-		\Config::load('parser', true);
+		// get and normalize the config
+		$parser = \Config::load('parser', true);
+		foreach (\Config::get('parser.extensions', array()) as $extension => $config)
+		{
+			if (isset($config['extension']))
+			{
+				unset($parser['extensions'][$extension]);
+				$parser['extensions'][$config['extension']] = $config;
+			}
+		}
+		\Config::set('parser', $parser);
 
 		// Get class name
 		$class = \Inflector::denamespace(get_called_class());
