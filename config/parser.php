@@ -29,7 +29,7 @@ return array(
 	'extensions' => array(
 		'php'      => 'View',
 		'twig'     => 'View_Twig',
-		'mthaml'   =>  array('class' => 'View_HamlTwig', 'extension' => 'twig'),
+		'mthaml'   =>  array('class' => 'View_HamlTwig', 'extension' => 'haml'),
 		'mustache' => 'View_Mustache',
 		'md'       => 'View_Markdown',
 		'dwoo'     => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
