@@ -28,7 +28,12 @@ class View_Twig extends \View
 	public static function _init()
 	{
 		parent::_init();
-		Twig_Autoloader::register();
+
+		// backward compatibility for Twig 1.x
+		if (class_exists('Twig_Autoloader'))
+		{
+			Twig_Autoloader::register();
+		}
 	}
 
 	protected function process_file($file_override = false)
