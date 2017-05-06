@@ -48,7 +48,6 @@ return array(
 	// MARKDOWN ( http://michelf.com/projects/php-markdown/ )
 	// ------------------------------------------------------------------------
 	'View_Markdown' => array(
-		'include'     => \Package::exists('parser').'vendor'.DS.'markdown'.DS.'markdown.php',
 		'auto_encode' => true,
 		'allow_php'   => true,
 	),
