@@ -104,7 +104,7 @@ class View extends \Fuel\Core\View
 		if ($file)
 		{
 			// Set extension when given
-			isset($extension) and $view->extension = $extension;
+			empty($extension) or $view->extension = $extension;
 
 			$view->set_filename($file, true);
 		}
