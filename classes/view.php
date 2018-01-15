@@ -23,17 +23,7 @@ class View extends \Fuel\Core\View
 
 	public static function _init()
 	{
-		// get and normalize the config
-		$parser = \Config::load('parser', true);
-		foreach (\Config::get('parser.extensions', array()) as $extension => $config)
-		{
-			if (isset($config['extension']))
-			{
-				unset($parser['extensions'][$extension]);
-				$parser['extensions'][$config['extension']] = $config;
-			}
-		}
-		\Config::set('parser', $parser);
+		\Config::load('parser', true);
 
 		// Get class name
 		$class = \Inflector::denamespace(get_called_class());
@@ -63,7 +53,6 @@ class View extends \Fuel\Core\View
 	public static function forge($file = null, $data = null, $auto_encode = null)
 	{
 		$class = null;
-		$extension = 'php';
 
 		// if a view file was given
 		if ($file !== null)
@@ -71,6 +60,12 @@ class View extends \Fuel\Core\View
 			// get its type and check if a parser extension is defined
 			$extension = pathinfo($file, PATHINFO_EXTENSION);
 			$class = \Config::get('parser.extensions.'.$extension, null);
+		}
+
+		// Only get rid of the extension if it is not an absolute file path
+		if ($file !== null and $file[0] !== '/' and $file[1] !== ':')
+		{
+			$file = $extension ? preg_replace('/\.'.preg_quote($extension).'$/i', '', $file) : $file;
 		}
 
 		// if no extension is defined, use the called class
@@ -108,6 +103,9 @@ class View extends \Fuel\Core\View
 		// if we have a view file, set it
 		if ($file)
 		{
+			// Set extension when given
+			$extension and $view->extension = $extension;
+
 			$view->set_filename($file, true);
 		}
 
