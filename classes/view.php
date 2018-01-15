@@ -60,12 +60,12 @@ class View extends \Fuel\Core\View
 			// get its type and check if a parser extension is defined
 			$extension = pathinfo($file, PATHINFO_EXTENSION);
 			$class = \Config::get('parser.extensions.'.$extension, null);
-		}
 
-		// Only get rid of the extension if it is not an absolute file path
-		if ($file !== null and $file[0] !== '/' and $file[1] !== ':')
-		{
-			$file = $extension ? preg_replace('/\.'.preg_quote($extension).'$/i', '', $file) : $file;
+			// Only get rid of the extension if it is not an absolute file path
+			if ($file[0] !== '/' and $file[1] !== ':')
+			{
+				$file = $extension ? preg_replace('/\.'.preg_quote($extension).'$/i', '', $file) : $file;
+			}
 		}
 
 		// if no extension is defined, use the called class
@@ -104,7 +104,7 @@ class View extends \Fuel\Core\View
 		if ($file)
 		{
 			// Set extension when given
-			$extension and $view->extension = $extension;
+			isset($extension) and $view->extension = $extension;
 
 			$view->set_filename($file, true);
 		}
