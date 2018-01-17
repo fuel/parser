@@ -21,23 +21,26 @@
  * This will allow you to upgrade fuel without losing your custom config.
  */
 
+use LightnCandy\LightnCandy;
+
 return array(
 
 	// ------------------------------------------------------------------------
 	// Register extensions to their parsers, either classname or array config
 	// ------------------------------------------------------------------------
 	'extensions' => array(
-		'php'      => 'View',
-		'twig'     => 'View_Twig',
-		'mthaml'   =>  array('class' => 'View_HamlTwig', 'extension' => 'haml'),
-		'mustache' => 'View_Mustache',
-		'md'       => 'View_Markdown',
-		'dwoo'     => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
-		'jade'     => 'View_Jade',
-		'haml'     => 'View_Haml',
-		'smarty'   => 'View_Smarty',
-		'phptal'   => 'View_Phptal',
-		'lex'      => 'View_Lex',
+		'php'        => 'View',
+		'twig'       => 'View_Twig',
+		'mthaml'     =>  array('class' => 'View_HamlTwig', 'extension' => 'haml'),
+		'mustache'   => 'View_Mustache',
+		'md'         => 'View_Markdown',
+		'dwoo'       => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
+		'jade'       => 'View_Jade',
+		'handlebars' => 'View_Handlebars',
+		'haml'       => 'View_Haml',
+		'smarty'     => 'View_Smarty',
+		'phptal'     => 'View_Phptal',
+		'lex'        => 'View_Lex',
 	),
 
 	// ------------------------------------------------------------------------
@@ -195,5 +198,18 @@ return array(
 	'View_Lex' => array(
 		'scope_glue' => '.',
 		'allow_php'  => false,
+	),
+
+	// Handlebars ( https://github.com/zordius/lightncandy )
+	// Packagist url: https://packagist.org/packages/zordius/lightncandy
+	// ------------------------------------------------------------------------
+	'View_Handlebars' => array(
+		'force_compile'   => true,
+		'compile_dir'     => APPPATH.'tmp'.DS.'handlebars'.DS,
+		'environment'     => array(
+			'flags'           => LightnCandy::FLAG_ERROR_EXCEPTION | LightnCandy::FLAG_ELSE | LightnCandy::FLAG_HBESCAPE | LightnCandy::FLAG_JS,
+			'helpers'         => array(),
+			'helperresolver'  => function($cx, $name) { return; },
+		),
 	),
 );
