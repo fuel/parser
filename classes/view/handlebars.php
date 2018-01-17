@@ -36,6 +36,13 @@ class View_Handlebars extends \View
 		// do we need to compile?
 		if ( ! is_file($compiled) or filemtime($file) > filemtime($compiled) or \Config::get('parser.View_Handlebars.force_compile', true))
 		{
+			// make sure the directory exists
+			if  ( ! is_dir($compiled_path = dirname($compiled)))
+			{
+				\File::create_dir($path, substr($compiled_path, strlen($path)));
+			}
+
+			// write the compiled code
 			file_put_contents($compiled, '<?php ' . LightnCandy::compile(
 				file_get_contents($file),
 				array(
