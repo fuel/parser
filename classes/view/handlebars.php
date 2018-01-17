@@ -54,8 +54,9 @@ class View_Handlebars extends \View
 		// fetch the compiled template and render it
 		try
 		{
+			$data = $this->get_data();
 			$result = include($compiled);
-			$result = $result($this->get_data());
+			$result = $result($data);
 		}
 		catch (\Exception $e)
 		{
