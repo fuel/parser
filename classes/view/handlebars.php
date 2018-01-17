@@ -39,7 +39,7 @@ class View_Handlebars extends \View
 			// make sure the directory exists
 			if  ( ! is_dir($compiled_path = dirname($compiled)))
 			{
-				\File::create_dir($path, substr($compiled_path, strlen($path)));
+				\File::create_dir(APPPATH, substr($compiled_path, strlen(APPPATH)));
 			}
 
 			// write the compiled code
