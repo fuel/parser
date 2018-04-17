@@ -5,10 +5,10 @@
  * Fuel is a fast, lightweight, community driven PHP5 framework.
  *
  * @package    Fuel
- * @version    1.8
+ * @version    1.8.1
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2016 Fuel Development Team
+ * @copyright  2010 - 2018 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -48,7 +48,6 @@ return array(
 	// MARKDOWN ( http://michelf.com/projects/php-markdown/ )
 	// ------------------------------------------------------------------------
 	'View_Markdown' => array(
-		'include'     => \Package::exists('parser').'vendor'.DS.'markdown'.DS.'markdown.php',
 		'auto_encode' => true,
 		'allow_php'   => true,
 	),
@@ -177,7 +176,7 @@ return array(
 		),
 	),
 
-	// Phptal ( http://phptal.org/manual/en/ )
+	// PHPTAL ( http://phptal.org/manual/en/ )
 	// ------------------------------------------------------------------------
 	'View_Phptal' => array(
 		'include'             => APPPATH.'vendor'.DS.'PHPTAL'.DS.'PHPTAL.php',
@@ -190,11 +189,25 @@ return array(
 		'force_reparse'       => false,
 	),
 
-	// Lex ( http://github.com/pyrocms/lex/ )
+	// LEX ( http://github.com/pyrocms/lex/ )
 	// Packagist url: https://packagist.org/packages/pyrocms/lex
 	// ------------------------------------------------------------------------
 	'View_Lex' => array(
 		'scope_glue' => '.',
 		'allow_php'  => false,
 	),
+
+	// HANDLEBARS ( https://github.com/zordius/lightncandy )
+	// Packagist url: https://packagist.org/packages/zordius/lightncandy
+	// ------------------------------------------------------------------------
+	'View_Handlebars' => array(
+		'force_compile'   => true,
+		'compile_dir'     => APPPATH.'tmp'.DS.'handlebars'.DS,
+		'environment'     => array(
+			'flags'           => class_exists('LightnCandy\LightnCandy') ? LightnCandy\LightnCandy::FLAG_ERROR_EXCEPTION | LightnCandy\LightnCandy::FLAG_ELSE | LightnCandy\LightnCandy::FLAG_HBESCAPE | LightnCandy\LightnCandy::FLAG_JS : 0,
+			'helpers'         => array(),
+			'helperresolver'  => function($cx, $name) { return; },
+		),
+	),
+
 );
