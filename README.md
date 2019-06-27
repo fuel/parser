@@ -37,6 +37,10 @@ View::forge('example.lex');
 
 // load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
 View::forge('example.dwoo');
+
+// load a Handlebars template, will load and parse app/views/example.handlebars
+View::forge('example.handlebars');
+
 ```
 
 ## Installing parsers
@@ -50,9 +54,10 @@ Simply add the libraries to your project's `composer.json` then run `php compose
         "dwoo/dwoo" : "*",
         "mustache/mustache" : "*",
         "smarty/smarty" : "*",
-        "twig/twig" : "*",
+        "twig/twig" : "2.*",
         "mthaml/mthaml": "*",
-		"pyrocms/lex": "*"
+        "pyrocms/lex": "*",
+        "zordius/lightncandy" : "dev-master"
     }
 }
 ```
