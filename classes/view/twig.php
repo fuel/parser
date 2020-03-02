@@ -45,9 +45,31 @@ class View_Twig extends \View
 		$view_name = pathinfo($file, PATHINFO_BASENAME);
 
 		// Twig Loader
-		$views_paths = \Config::get('parser.View_Twig.views_paths', array(APPPATH . 'views'));
+		$views_paths = \Config::get('parser.View_Twig.views_paths');
+		if ( ! $view_paths)
+		{
+			// get the paths defined in the active request
+			if (class_exists('Request', false) and ($request = \Request::active()))
+			{
+				$views_paths = array();
+				foreach ($request->get_paths() as $path)
+				{
+					$views_paths[] = $path . 'views';
+				}
+			}
+			$views_pathsp[] = APPPATH . 'views';
+		}
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
-		static::$_parser_loader = new Twig_Loader_Filesystem($views_paths);
+
+		// check if we're using Twig v3
+		if (class_exists('\Twig\Loader\FileSystemLoader'))
+		{
+			static::$_parser_loader = new \Twig\Loader\FileSystemLoader($views_paths);
+		}
+		else
+		{
+			static::$_parser_loader = new Twig_Loader_Filesystem($views_paths);
+		}
 
 		if ( ! empty($global_data))
 		{
@@ -62,7 +84,15 @@ class View_Twig extends \View
 			static::parser();
 		}
 
-		$twig_lexer = new Twig_Lexer(static::$_parser, static::$_twig_lexer_conf);
+		// check if we're using Twig v3
+		if (class_exists('\Twig\Lexer'))
+		{
+			$twig_lexer = new \Twig\Lexer(static::$_parser, static::$_twig_lexer_conf);
+		}
+		else
+		{
+			$twig_lexer = new Twig_Lexer(static::$_parser, static::$_twig_lexer_conf);
+		}
 		static::$_parser->setLexer($twig_lexer);
 
 		try
@@ -99,7 +129,16 @@ class View_Twig extends \View
 
 		// Twig Environment
 		$twig_env_conf = \Config::get('parser.View_Twig.environment', array('optimizer' => -1));
-		static::$_parser = new Twig_Environment(static::$_parser_loader, $twig_env_conf);
+
+		// check if we're using Twig v3
+		if (class_exists('\Twig\Environment'))
+		{
+			static::$_parser = new \Twig\Environment(static::$_parser_loader, $twig_env_conf);
+		}
+		else
+		{
+			static::$_parser = new Twig_Environment(static::$_parser_loader, $twig_env_conf);
+		}
 
 		foreach (\Config::get('parser.View_Twig.extensions') as $ext)
 		{
