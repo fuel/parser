@@ -46,7 +46,7 @@ class View_Twig extends \View
 
 		// Twig Loader
 		$views_paths = \Config::get('parser.View_Twig.views_paths');
-		if ( ! $view_paths)
+		if ( ! $views_paths)
 		{
 			// get the paths defined in the active request
 			if (class_exists('Request', false) and ($request = \Request::active()))
