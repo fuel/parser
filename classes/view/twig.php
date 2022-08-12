@@ -20,12 +20,16 @@ use Twig_Lexer;
 class View_Twig extends \View
 {
 	protected static $_parser;
+	protected static $_version;
 	protected static $_parser_loader;
 	protected static $_twig_lexer_conf;
 
 	public static function _init()
 	{
 		parent::_init();
+
+		// Detect twig version
+		static::$_version = (float) substr(class_exists('\Twig\Environment') ? \Twig\Environment::VERSION : Twig_Environment::VERSION, 0, 3);
 
 		// backward compatibility for Twig 1.x
 		if (class_exists('Twig_Autoloader'))
@@ -97,7 +101,16 @@ class View_Twig extends \View
 
 		try
 		{
-			$result = static::parser()->loadTemplate($view_name)->render($local_data);
+			// Arguments of loadTemplate changed in twig 3.x
+			if (static::$_version >= 3)
+			{
+				$template_classe = static::parser()->getTemplateClass($view_name);
+				$result = static::parser()->loadTemplate($template_classe, $view_name)->render($local_data);
+			}
+			else
+			{
+				$result = static::parser()->loadTemplate($view_name)->render($local_data);
+			}
 		}
 		catch (\Exception $e)
 		{
