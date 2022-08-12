@@ -22,7 +22,7 @@ use Twig_Function_Method;
 /**
  * Provides Twig support for commonly used FuelPHP classes and methods.
  */
-class Twig_Fuel_Extension extends Twig_Extension
+class Twig_Fuel_Extension extends Twig_Fuel_Extension_Wrapper
 {
 	/**
 	 * Gets the name of the extension.
@@ -41,8 +41,72 @@ class Twig_Fuel_Extension extends Twig_Extension
 	 */
 	public function getFunctions()
 	{
+		// new Twig 3.x syntax
+		if(class_exists('\Twig\TwigFunction'))
+		{
+			return array(
+				new \Twig\TwigFunction('fuel_version', array($this, 'fuel_version')),
+				new \Twig\TwigFunction('url', array($this, 'url')),
+
+				new \Twig\TwigFunction('base_url', array('Uri', 'base')),
+				new \Twig\TwigFunction('current_url', array('Uri', 'current')),
+				new \Twig\TwigFunction('uri_segment' , array('Uri', 'segment')),
+				new \Twig\TwigFunction('uri_segments', array('Uri', 'segments')),
+
+				new \Twig\TwigFunction('config', array('Config', 'get')),
+
+				new \Twig\TwigFunction('dump', array('Debug', 'dump')),
+
+				new \Twig\TwigFunction('lang', array('Lang', 'get')),
+
+				new \Twig\TwigFunction('form_open', array('Form', 'open')),
+				new \Twig\TwigFunction('form_close', array('Form', 'close')),
+				new \Twig\TwigFunction('form_input', array('Form', 'input')),
+				new \Twig\TwigFunction('form_password', array('Form', 'password')),
+				new \Twig\TwigFunction('form_hidden', array('Form', 'hidden')),
+				new \Twig\TwigFunction('form_radio' , array('Form', 'radio')),
+				new \Twig\TwigFunction('form_checkbox', array('Form', 'checkbox')),
+				new \Twig\TwigFunction('form_textarea', array('Form', 'textarea')),
+				new \Twig\TwigFunction('form_file', array('Form', 'file')),
+				new \Twig\TwigFunction('form_button', array('Form', 'button')),
+				new \Twig\TwigFunction('form_reset', array('Form', 'reset')),
+				new \Twig\TwigFunction('form_submit', array('Form', 'submit')),
+				new \Twig\TwigFunction('form_select', array('Form', 'select')),
+				new \Twig\TwigFunction('form_label', array('Form', 'label')),
+
+				new \Twig\TwigFunction('form_val', array('Input', 'param')),
+				new \Twig\TwigFunction('input_get', array('Input', 'get')),
+				new \Twig\TwigFunction('input_post', array('Input', 'post')),
+
+				new \Twig\TwigFunction('asset_add_path', array('Asset', 'add_path')),
+				new \Twig\TwigFunction('asset_css', array('Asset', 'css')),
+				new \Twig\TwigFunction('asset_js', array('Asset', 'js')),
+				new \Twig\TwigFunction('asset_img', array('Asset', 'img')),
+				new \Twig\TwigFunction('asset_render', array('Asset', 'render')),
+				new \Twig\TwigFunction('asset_find_file', array('Asset', 'find_file')),
+
+				new \Twig\TwigFunction('theme_asset_css', array($this, 'theme_asset_css')),
+				new \Twig\TwigFunction('theme_asset_js', array($this, 'theme_asset_js')),
+				new \Twig\TwigFunction('theme_asset_img', array($this, 'theme_asset_img')),
+
+				new \Twig\TwigFunction('html_anchor', array('Html', 'anchor')),
+				new \Twig\TwigFunction('html_mail_to_safe', array('Html', 'mail_to_safe')),
+
+				new \Twig\TwigFunction('session_get', array('Session', 'get')),
+				new \Twig\TwigFunction('session_get_flash', array('Session', 'get_flash')),
+
+				new \Twig\TwigFunction('security_js_fetch_token', array('Security', 'js_fetch_token')),
+				new \Twig\TwigFunction('security_js_set_token', array('Security', 'js_set_token')),
+
+				new \Twig\TwigFunction('markdown_parse', array('Markdown', 'parse')),
+
+				new \Twig\TwigFunction('auth_has_access', array('Auth', 'has_access')),
+				new \Twig\TwigFunction('auth_check', array('Auth', 'check')),
+				new \Twig\TwigFunction('auth_get', array('Auth', 'get')),
+			);
+		}
 		// new Twig 2.x syntax
-		if (class_exists('Twig_SimpleFunction'))
+		elseif (class_exists('Twig_SimpleFunction'))
 		{
 			return array(
 				new Twig_SimpleFunction('fuel_version', array($this, 'fuel_version')),

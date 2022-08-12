@@ -26,6 +26,7 @@
 	'Parser\\View_Phptal'           => __DIR__.'/classes/view/phptal.php',
 	'Parser\\View_Lex'              => __DIR__.'/classes/view/lex.php',
 
-	'Parser\\Twig_Fuel_Extension'   => __DIR__.'/classes/twig/fuel/extension.php',
-	'Parser\\Smarty_Fuel_Extension' => __DIR__.'/classes/smarty/fuel/extension.php',
+	'Parser\\Twig_Fuel_Extension_Wrapper'   => __DIR__.'/classes/twig/fuel/extension/wrapper.php',
+	'Parser\\Twig_Fuel_Extension'   		=> __DIR__.'/classes/twig/fuel/extension.php',
+	'Parser\\Smarty_Fuel_Extension' 		=> __DIR__.'/classes/smarty/fuel/extension.php',
 ));
