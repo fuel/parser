@@ -66,9 +66,9 @@ class View_Twig extends \View
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
 
 		// check if we're using Twig v3
-		if (class_exists('\Twig\Loader\FileSystemLoader'))
+		if (class_exists('\Twig\Loader\FilesystemLoader'))
 		{
-			static::$_parser_loader = new \Twig\Loader\FileSystemLoader($views_paths);
+			static::$_parser_loader = new \Twig\Loader\FilesystemLoader($views_paths);
 		}
 		else
 		{
