@@ -33,8 +33,15 @@ class View extends \Fuel\Core\View
 			{
 				if ( ! array_key_exists($include, static::$loaded_files))
 				{
-					require $include;
-					static::$loaded_files[$include] = true;
+					if (file_exists($include))
+					{
+						require $include;
+						static::$loaded_files[$include] = true;
+					}
+					else
+					{
+						throw new \FuelException("Parser: required include \"$include\" not found");
+					}
 				}
 			}
 		}

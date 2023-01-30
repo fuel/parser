@@ -20,11 +20,14 @@ View::forge('example.mustache');
 // load a Twig template, will load and parse app/views/example.twig
 View::forge('example.twig');
 
-// load a Hybrid Haml / Twig template, ATTENTION: this one expects app/views/example.twig and {% haml %} code at the top of the view
+// load a Hybrid Haml / Twig template, ATTENTION: this one actually loads app/views/example.twig and {% haml %} code at the top of the view
 View::forge('example.mthaml');
 
 // load a Jade template, will load and parse app/views/example.jade
 View::forge('example.jade');
+
+// load a Plates template, will load and parse app/views/example.plates
+View::forge('example.plates');
 
 // load a Haml template, will load and parse app/views/example.haml
 View::forge('example.haml');
@@ -35,11 +38,14 @@ View::forge('example.smarty');
 // load a Lex template, will load and parse app/views/example.lex
 View::forge('example.lex');
 
-// load a Dwoo template, ATTENTION: this one expects app/views/example.tpl
+// load a Dwoo template, ATTENTION: this one actually loads app/views/example.tpl
 View::forge('example.dwoo');
 
 // load a Handlebars template, will load and parse app/views/example.handlebars
 View::forge('example.handlebars');
+
+// load a Plates template, ATTENTION: this one actually loads app/views/example.tpl
+View::forge('example.plates');
 
 ```
 
@@ -57,6 +63,7 @@ Simply add the libraries to your project's `composer.json` then run `php compose
         "twig/twig" : "2.*",
         "mthaml/mthaml": "*",
         "pyrocms/lex": "*",
+        "league/plates" : "3.*",
         "zordius/lightncandy" : "dev-master"
     }
 }

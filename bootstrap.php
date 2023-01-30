@@ -25,6 +25,7 @@
 	'Parser\\View_Smarty'           => __DIR__.'/classes/view/smarty.php',
 	'Parser\\View_Phptal'           => __DIR__.'/classes/view/phptal.php',
 	'Parser\\View_Lex'              => __DIR__.'/classes/view/lex.php',
+	'Parser\\View_Plates'           => __DIR__.'/classes/view/plates.php',
 
 	'Parser\\Twig_Fuel_Extension_Wrapper'   => __DIR__.'/classes/twig/fuel/extension/wrapper.php',
 	'Parser\\Twig_Fuel_Extension'   		=> __DIR__.'/classes/twig/fuel/extension.php',
