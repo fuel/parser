@@ -18,7 +18,7 @@ class View_Plates extends \View
 	protected static $_parser;
 
 	// create a parser instance
-	public static function parser()
+	public static function parser($extension = 'tpl')
 	{
 		if ( ! empty(static::$_parser))
 		{
@@ -26,7 +26,7 @@ class View_Plates extends \View
 		}
 
 		// create a parser instance
-		static::$_parser = new \League\Plates\Engine(null, $this->extension);
+		static::$_parser = new \League\Plates\Engine(null, $extension);
 
 		// any extensions defined?
 		foreach (\Config::get('parser.View_Plates.extensions', array()) as $extension)
@@ -60,21 +60,21 @@ class View_Plates extends \View
 		$file = pathinfo($file);
 
 		// set the directory and extension for this template
-		static::parser()->setDirectory($file['dirname']);
+		static::parser($this->extension)->setDirectory($file['dirname']);
 		if ( ! empty($file['extension']))
 		{
-			static::parser()->setFileExtension($file['extension']);
+			static::parser($this->extension)->setFileExtension($file['extension']);
 		}
 		else
 		{
-			static::parser()->setFileExtension(null);
+			static::parser($this->extension)->setFileExtension(null);
 		}
 
 		// render the template
 		try
 		{
 			$data = $this->get_data();
-			$result = static::parser()->render($file['filename'], $data);
+			$result = static::parser($this->extension)->render($file['filename'], $data);
 		}
 		catch (\Exception $e)
 		{
