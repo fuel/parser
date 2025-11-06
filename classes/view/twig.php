@@ -61,7 +61,7 @@ class View_Twig extends \View
 					$views_paths[] = $path . 'views';
 				}
 			}
-			$views_pathsp[] = APPPATH . 'views';
+			$views_paths[] = APPPATH . 'views';
 		}
 		array_unshift($views_paths, pathinfo($file, PATHINFO_DIRNAME));
 
@@ -115,7 +115,10 @@ class View_Twig extends \View
 		catch (\Exception $e)
 		{
 			// Delete the output buffer & re-throw the exception
-			ob_end_clean();
+			if (ob_get_level() > 0)
+			{
+				ob_end_clean();
+			}
 			throw $e;
 		}
 
